@@ -12,3 +12,4 @@ Here write your ideas for the story:
 -He then puts you to this cycle where you have to face every one you murdered for hades
 -final boss is Zeus, overpowered , almost every time will kill you(repeating the whole process) if you kill him youll break the loop and free yourself(you go to heaven)
 - youll be discovering your past through finding your memories in the loop(might be some minigames like in FNAF or some animation)
+nkbcbebfbkab
