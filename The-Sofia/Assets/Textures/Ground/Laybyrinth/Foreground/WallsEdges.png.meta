@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ff35d80d1f1f59b0e9557cf834b1aa4d
+guid: 10620f240410083e4ae05632c1261c48
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlatformWalls_0
+      name: WallsEdges_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c2e5ee73b4386f70822a031eff55469
-      internalID: 916561813
+      spriteID: 5a4e06e07e836351988eca4e0b81b441
+      internalID: -1956914133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlatformWalls_1
+      name: WallsEdges_1
       rect:
         serializedVersion: 2
         x: 32
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41c57e7c7f52419f7b00e4bbf8208470
-      internalID: -348796817
+      spriteID: 053970d17116259b49a3d3a3bfb2ff67
+      internalID: -1904485512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlatformWalls_2
+      name: WallsEdges_2
       rect:
         serializedVersion: 2
         x: 64
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e89f2baf2b041d2a7a7a159683c8a4e2
-      internalID: 1189793615
+      spriteID: 76ba3475142233d79ae590ea02816212
+      internalID: 673206015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlatformWalls_3
+      name: WallsEdges_3
       rect:
         serializedVersion: 2
         x: 0
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fe79534ff275ab63be8f2f8268fe75f
-      internalID: -680317500
+      spriteID: 0f7947b65f191bf8cb86bab61ba9d5a7
+      internalID: -1475036376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlatformWalls_4
+      name: WallsEdges_4
       rect:
         serializedVersion: 2
         x: 64
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f6885d7b213a2d3ba8718ec1343e3cc
-      internalID: -1178977068
+      spriteID: d194955ba785466b28a28b686b0a6a01
+      internalID: 2093936983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlatformWalls_5
+      name: WallsEdges_5
       rect:
         serializedVersion: 2
         x: 0
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6c68e57298a7291db9c0acd4e1f201e
-      internalID: 480878494
+      spriteID: e1218cf65103bfbf29bf25cbebf54d99
+      internalID: -441175265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlatformWalls_6
+      name: WallsEdges_6
       rect:
         serializedVersion: 2
         x: 32
@@ -245,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da26fb7d0f328f3f393fdc92f5aa6bfd
-      internalID: 1021737121
+      spriteID: 876f3a6b1230af49784ff5fbdb56d448
+      internalID: 52019399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlatformWalls_7
+      name: WallsEdges_7
       rect:
         serializedVersion: 2
         x: 64
@@ -266,8 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e011033fb3b45e1cfbf64f78cc9ca7de
-      internalID: -1893794862
+      spriteID: a7354fd2eeeb3596f828ee9224a6166c
+      internalID: 719251333
       vertices: []
       indices: 
       edges: []
@@ -283,14 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PlatformWalls_6: 1021737121
-      PlatformWalls_3: -680317500
-      PlatformWalls_2: 1189793615
-      PlatformWalls_7: -1893794862
-      PlatformWalls_5: 480878494
-      PlatformWalls_0: 916561813
-      PlatformWalls_4: -1178977068
-      PlatformWalls_1: -348796817
+      WallsEdges_1: -1904485512
+      WallsEdges_7: 719251333
+      WallsEdges_0: -1956914133
+      WallsEdges_2: 673206015
+      WallsEdges_5: -441175265
+      WallsEdges_3: -1475036376
+      WallsEdges_4: 2093936983
+      WallsEdges_6: 52019399
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
