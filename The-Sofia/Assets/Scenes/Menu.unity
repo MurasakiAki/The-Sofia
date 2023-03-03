@@ -1008,13 +1008,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1659158756}
   m_HandleRect: {fileID: 1953339639}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: -80
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1542804409}
+        m_TargetAssemblyTypeName: Options, Assembly-CSharp
+        m_MethodName: Volume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &893671026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1173,6 @@ GameObject:
   - component: {fileID: 994863796}
   - component: {fileID: 994863795}
   - component: {fileID: 994863794}
-  - component: {fileID: 994863797}
   m_Layer: 5
   m_Name: OptionButton
   m_TagString: Untagged
@@ -1272,18 +1283,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994863792}
   m_CullTransparentMesh: 1
---- !u!114 &994863797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994863792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cf6e5f10e2b38b408744e8c07cfb363, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1001263901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,31 +1403,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1054758461}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1705637909}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1542804407}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1054758461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2238,6 +2213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1542804408}
+  - component: {fileID: 1542804409}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -2271,6 +2247,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1542804409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542804407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80962658f1297a84f8b75cfcc73c40dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 24dedf721945d07419f57aee112391c7, type: 2}
 --- !u!1 &1630281973
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,13 +2511,13 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1892160860}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1542804409}
+        m_TargetAssemblyTypeName: Options, Assembly-CSharp
+        m_MethodName: FullScreen
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
