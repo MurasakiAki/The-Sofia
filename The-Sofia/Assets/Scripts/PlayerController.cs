@@ -73,5 +73,6 @@ public class PlayerController : MonoBehaviour
         // Kód pro smrt postavy
         // Mùžeš napøíklad ukonèit hru, zobrazit nìjakou zprávu, apod.
         Debug.Log("Zemøel jsi");
+
     }
 }
