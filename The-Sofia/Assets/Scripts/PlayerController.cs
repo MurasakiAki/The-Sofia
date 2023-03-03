@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
         _playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         // Get horizontal input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        Debug.Log(IsGrounded());
         // Check if the player is grounded
         if (Input.GetButtonDown("Jump"))
         {
