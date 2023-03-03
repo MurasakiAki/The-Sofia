@@ -7,11 +7,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed = 5.0f;
     [SerializeField] private float jumpPower = 5.0f;
     [SerializeField] private LayerMask groundLayer;
+    int jumps = 0;
 
     private Rigidbody2D _playerRigidbody;
 
     private void Start()
     {
+        jumps = 0;
         _playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -37,9 +39,11 @@ public class PlayerController : MonoBehaviour
         // Check if the player is grounded
         if (Input.GetButtonDown("Jump"))
         {
-            if (IsGrounded())
+            if (IsGrounded() || jumps==1)
             {
                 Jump();
+                jumps += 1;
+                if (jumps == 2){ jumps = 0; }
             }
         }
     }
@@ -55,5 +59,17 @@ public class PlayerController : MonoBehaviour
         return hit.collider != null && hit.collider.CompareTag("Ground");
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Trap"))
+        {
+            Die();
+        }
+    }
 
+    private void Die()
+    {
+        // Kód pro smrt postavy
+        // Mùžeš napøíklad ukonèit hru, zobrazit nìjakou zprávu, apod.
+    }
 }
