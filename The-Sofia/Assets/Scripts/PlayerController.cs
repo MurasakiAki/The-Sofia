@@ -6,22 +6,23 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 5.0f;
     [SerializeField] private float jumpPower = 5.0f;
-    
+    [SerializeField] private LayerMask groundLayer;
+
     private Rigidbody2D _playerRigidbody;
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
         // Get horizontal input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
-        
-      
+
         // Move the player
-        Vector2 movement = new Vector2(horizontalInput * movementSpeed, rb.velocity.y);
-        rb.velocity = movement;
+        Vector2 movement = new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
+        _playerRigidbody.velocity = movement;
 
         // Flip the player's sprite depending on the direction of movement
         if (horizontalInput > 0)
@@ -33,37 +34,27 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
+        Debug.Log(IsGrounded());
         // Check if the player is grounded
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastDistance, groundLayer);
-        isGrounded = hit.collider != null;
-
-        Debug.Log(Input.GetButtonDown("Jump"));
-
-        // Jump if the player is grounded and the jump button is pressed
         if (Input.GetButtonDown("Jump"))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            if (IsGrounded())
+            {
+                Jump();
+            }
         }
     }
-    private void Update()
-    {
-        MovePlayer();
 
-        if (Input.GetButton("Jump") && IsGrounded())
-            Jump();
-    }
-    private void MovePlayer()
+    private void Jump()
     {
-        var horizontalInput = Input.GetAxisRaw("Horizontal");
-        _playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
+        _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, jumpPower);
     }
-    private void Jump() => _playerRigidbody.velocity = new Vector2( 0, jumpPower);
 
     private bool IsGrounded()
     {
-        var groundCheck = Physics2D.Raycast(transform.position, Vector2.down, 0.7f);
-        return groundCheck.collider != null && groundCheck.collider.CompareTag("Ground");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.7f, groundLayer);
+        return hit.collider != null && hit.collider.CompareTag("Ground");
     }
 
-   
+
 }
