@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("dotek");
         if (other.CompareTag("Trap"))
         {
             Die();
@@ -71,5 +72,6 @@ public class PlayerController : MonoBehaviour
     {
         // Kód pro smrt postavy
         // Mùžeš napøíklad ukonèit hru, zobrazit nìjakou zprávu, apod.
+        Debug.Log("Zemøel jsi");
     }
 }
