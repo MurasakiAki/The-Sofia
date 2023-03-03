@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 5f;
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float groundRaycastDistance = 0.2f;
-    [SerializeField] private LayerMask groundLayer;
-
-    private Rigidbody2D rb;
-    private bool isGrounded;
-
-    private void Awake()
+    [SerializeField] private float playerSpeed = 5.0f;
+    [SerializeField] private float jumpPower = 5.0f;
+    
+    private Rigidbody2D _playerRigidbody;
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -49,4 +45,25 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
+    private void Update()
+    {
+        MovePlayer();
+
+        if (Input.GetButton("Jump") && IsGrounded())
+            Jump();
+    }
+    private void MovePlayer()
+    {
+        var horizontalInput = Input.GetAxisRaw("Horizontal");
+        _playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
+    }
+    private void Jump() => _playerRigidbody.velocity = new Vector2( 0, jumpPower);
+
+    private bool IsGrounded()
+    {
+        var groundCheck = Physics2D.Raycast(transform.position, Vector2.down, 0.7f);
+        return groundCheck.collider != null && groundCheck.collider.CompareTag("Ground");
+    }
+
+   
 }

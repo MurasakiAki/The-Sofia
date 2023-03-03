@@ -672,12 +672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0497c34ffae1591a2b936829f97c5898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  jumpForce: 5
-  groundRaycastDistance: 0.2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  playerSpeed: 5
+  jumpPower: 5
 --- !u!1 &1112632901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1092,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1106,7 +1102,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1238,11 +1234,13 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 784def89891a4025fb855dcde43f0475, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: eb8ffeae6160cf9f998a5fe8aa72ff48, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -1148260889, guid: 95c9745524737ec4881deb629edfbbae, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -2071924958, guid: 95c9745524737ec4881deb629edfbbae, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -150882665, guid: 95c9745524737ec4881deb629edfbbae, type: 3}
   - m_RefCount: 13
@@ -1263,6 +1261,8 @@ Tilemap:
     m_Data: {fileID: 1577212985, guid: 95c9745524737ec4881deb629edfbbae, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1012108723, guid: 95c9745524737ec4881deb629edfbbae, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -2071924958, guid: 95c9745524737ec4881deb629edfbbae, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 44
     m_Data:
