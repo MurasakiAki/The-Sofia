@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
         _playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         // Get horizontal input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
