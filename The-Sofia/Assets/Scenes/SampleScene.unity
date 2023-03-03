@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 575472956}
   - component: {fileID: 575472955}
   - component: {fileID: 575472958}
-  - component: {fileID: 575472954}
+  - component: {fileID: 575472959}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -546,19 +546,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &575472954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575472953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0497c34ffae1591a2b936829f97c5898, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!50 &575472955
 Rigidbody2D:
   serializedVersion: 4
@@ -673,6 +660,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &575472959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575472953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0497c34ffae1591a2b936829f97c5898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 5
+  jumpForce: 5
+  groundRaycastDistance: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &1112632901
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,9 +692,9 @@ GameObject:
   - component: {fileID: 1112632905}
   - component: {fileID: 1112632907}
   - component: {fileID: 1112632906}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Default
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
