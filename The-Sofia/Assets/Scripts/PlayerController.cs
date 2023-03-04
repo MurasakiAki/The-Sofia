@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     int jumps = 0;
     public int max_jumps;
-    bool fell;
 
     public bool can_move;
 
@@ -26,7 +25,6 @@ public class PlayerController : MonoBehaviour
     {
         if (IsGrounded())
         {
-            fell = true;
             jumps = 0;
         }
 
@@ -53,7 +51,7 @@ public class PlayerController : MonoBehaviour
             // Check if the player is grounded
             if (Input.GetButtonDown("Jump"))
             {
-                if (jumps<max_jumps&&fell)
+                if (jumps<max_jumps)
                 {
                     Jump();
                  }
@@ -66,7 +64,6 @@ public class PlayerController : MonoBehaviour
         _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, jumpPower);
         jumps += 1;
         Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
-        if (jumps == max_jumps) { fell = false; }
     }
 
     private bool IsGrounded()
