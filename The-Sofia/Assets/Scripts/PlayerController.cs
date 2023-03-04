@@ -22,36 +22,39 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Get horizontal input
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-
-        // Move the player
         if(can_move)
         {
+            // Get horizontal input
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+            // Move the player
             Vector2 movement = new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
             _playerRigidbody.velocity = movement;
+        
+        
+            // Flip the player's sprite depending on the direction of movement
+            if (horizontalInput > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (horizontalInput < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+
+            // Check if the player is grounded
+            if (Input.GetButtonDown("Jump"))
+            {
+                if (IsGrounded() || jumps==1)
+                {
+                    Jump();
+                    jumps += 1;
+                    if (jumps == 2){ jumps = 0; }
+                }
+            }
+
         }
         
-        // Flip the player's sprite depending on the direction of movement
-        if (horizontalInput > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (horizontalInput < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-
-        // Check if the player is grounded
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (IsGrounded() || jumps==1)
-            {
-                Jump();
-                jumps += 1;
-                if (jumps == 2){ jumps = 0; }
-            }
-        }
     }
 
     private void Jump()
