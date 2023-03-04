@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower = 5.0f;
     [SerializeField] private LayerMask groundLayer;
     int jumps = 0;
+    public int max_jumps;
+    bool fell;
 
     public bool can_move;
 
@@ -22,6 +24,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (IsGrounded())
+        {
+            fell = true;
+            jumps = 0;
+        }
+
+        // Get horizontal input
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        // Move the player
         if(can_move)
         {
             // Get horizontal input
@@ -55,6 +67,27 @@ public class PlayerController : MonoBehaviour
 
         }
         
+        // Flip the player's sprite depending on the direction of movement
+        if (horizontalInput > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (horizontalInput < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        // Check if the player is grounded
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (jumps<max_jumps&&fell)
+            {
+                Jump();
+                jumps += 1;
+                Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
+                if (jumps == max_jumps){ jumps = 0;fell = false; }
+            }
+        }
     }
 
     private void Jump()
