@@ -54,11 +54,9 @@ public class PlayerController : MonoBehaviour
             // Check if the player is grounded
             if (Input.GetButtonDown("Jump"))
             {
-                if (IsGrounded() || jumps==1)
+                if (jumps < max_jumps && fell)
                 {
                     Jump();
-                    jumps += 1;
-                    if (jumps == 2){ jumps = 0; }
                 }
             }
 
@@ -74,22 +72,14 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        // Check if the player is grounded
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (jumps<max_jumps&&fell)
-            {
-                Jump();
-                jumps += 1;
-                Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
-                if (jumps == max_jumps){ jumps = 0;fell = false; }
-            }
-        }
     }
 
     private void Jump()
     {
         _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, jumpPower);
+        jumps += 1;
+        Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
+        if (jumps == max_jumps) { fell = false; }
     }
 
     private bool IsGrounded()
