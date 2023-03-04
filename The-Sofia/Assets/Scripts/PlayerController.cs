@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower = 5.0f;
     [SerializeField] private LayerMask groundLayer;
     int jumps = 0;
+    public int max_jumps;
+    bool fell;
 
     private Rigidbody2D _playerRigidbody;
 
@@ -19,6 +21,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (IsGrounded())
+        {
+            fell = true;
+            jumps = 0;
+        }
+
         // Get horizontal input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
@@ -39,11 +47,12 @@ public class PlayerController : MonoBehaviour
         // Check if the player is grounded
         if (Input.GetButtonDown("Jump"))
         {
-            if (IsGrounded() || jumps==1)
+            if (jumps<max_jumps&&fell)
             {
                 Jump();
                 jumps += 1;
-                if (jumps == 2){ jumps = 0; }
+                Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
+                if (jumps == max_jumps){ jumps = 0;fell = false; }
             }
         }
     }
