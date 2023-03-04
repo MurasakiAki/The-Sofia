@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
             // Check if the player is grounded
             if (Input.GetButtonDown("Jump"))
             {
-                if (jumps<max_jumps)
+                if (jumps < max_jumps && can_jump == true)
                 {
                     jumps += 1;
                     Jump();
@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             is_grounded = true;
+            Debug.Log(is_grounded);
         }
     }
 
