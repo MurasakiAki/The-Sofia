@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed = 5.0f;
     [SerializeField] private float jumpPower = 5.0f;
     [SerializeField] private LayerMask groundLayer;
-    int jumps = 0;
+    private bool can_jump;
+    private int jumps = 0;
     public int max_jumps;
 
     public bool can_move;
@@ -25,7 +26,11 @@ public class PlayerController : MonoBehaviour
     {
         if (IsGrounded())
         {
+            can_jump = true;
             jumps = 0;
+        }
+        else{
+            can_jump = false;
         }
 
         // Get horizontal input
@@ -51,6 +56,7 @@ public class PlayerController : MonoBehaviour
             // Check if the player is grounded
             if (Input.GetButtonDown("Jump"))
             {
+                jumps += 1;
                 if (jumps<max_jumps)
                 {
                     Jump();
@@ -62,8 +68,8 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, jumpPower);
-        jumps += 1;
         Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
+        if(jumps == max_jumps){can_jump = false;}
     }
 
     private bool IsGrounded()
