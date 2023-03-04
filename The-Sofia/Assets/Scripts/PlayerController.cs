@@ -56,9 +56,6 @@ public class PlayerController : MonoBehaviour
                 if (jumps<max_jumps&&fell)
                 {
                     Jump();
-                    jumps += 1;
-                    Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
-                    if (jumps == max_jumps){ jumps = 0;fell = false; }
                  }
             }
         }
@@ -67,6 +64,9 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, jumpPower);
+        jumps += 1;
+        Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
+        if (jumps == max_jumps) { fell = false; }
     }
 
     private bool IsGrounded()
