@@ -9,12 +9,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     int jumps = 0;
 
+    public bool can_move;
+
     private Rigidbody2D _playerRigidbody;
 
     private void Start()
     {
         jumps = 0;
         _playerRigidbody = GetComponent<Rigidbody2D>();
+        can_move = true;
     }
 
     private void Update()
@@ -23,9 +26,12 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
         // Move the player
-        Vector2 movement = new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
-        _playerRigidbody.velocity = movement;
-
+        if(can_move)
+        {
+            Vector2 movement = new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
+            _playerRigidbody.velocity = movement;
+        }
+        
         // Flip the player's sprite depending on the direction of movement
         if (horizontalInput > 0)
         {
@@ -59,20 +65,15 @@ public class PlayerController : MonoBehaviour
         return hit.collider != null && hit.collider.CompareTag("Ground");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void set_movability(bool set)
     {
-        Debug.Log("dotek");
-        if (other.CompareTag("Trap"))
-        {
-            Die();
-        }
+        can_move = set;
     }
 
-    private void Die()
+    public void Die()
     {
-        // Kód pro smrt postavy
-        // Mùžeš napøíklad ukonèit hru, zobrazit nìjakou zprávu, apod.
-        Debug.Log("Zemøel jsi");
+        set_movability(false);
+        Debug.Log("It seems, that you have been impaled by nasty pointy sticks.");
 
     }
 }
