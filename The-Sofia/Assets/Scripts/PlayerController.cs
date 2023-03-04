@@ -61,11 +61,7 @@ public class PlayerController : MonoBehaviour
                     if (jumps == max_jumps){ jumps = 0;fell = false; }
                  }
             }
-            
-
         }
-        
-        
     }
 
     private void Jump()
