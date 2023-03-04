@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     int jumps = 0;
     public int max_jumps;
     bool fell;
+    
 
     public bool can_move;
 
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
                 if (jumps<max_jumps&&fell)
                 {
                     Jump();
-                 }
+                }
             }
         }
     }
