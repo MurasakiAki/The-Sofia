@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower = 5.0f;
     [SerializeField] private LayerMask groundLayer;
     private bool can_jump;
+    private bool is_grounded;
     private int jumps = 0;
     public int max_jumps;
 
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (IsGrounded())
+        if (is_grounded)
         {
             can_jump = true;
             jumps = 0;
@@ -56,9 +57,9 @@ public class PlayerController : MonoBehaviour
             // Check if the player is grounded
             if (Input.GetButtonDown("Jump"))
             {
-                jumps += 1;
                 if (jumps<max_jumps)
                 {
+                    jumps += 1;
                     Jump();
                 }
             }
@@ -72,10 +73,12 @@ public class PlayerController : MonoBehaviour
         if(jumps == max_jumps){can_jump = false;}
     }
 
-    private bool IsGrounded()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.7f, groundLayer);
-        return hit.collider != null && hit.collider.CompareTag("Ground");
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            is_grounded = true;
+        }
     }
 
     public void set_movability(bool set)
