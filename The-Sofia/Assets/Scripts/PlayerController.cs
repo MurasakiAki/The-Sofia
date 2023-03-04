@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
             Vector2 movement = new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
             _playerRigidbody.velocity = movement;
         
-        
             // Flip the player's sprite depending on the direction of movement
             if (horizontalInput > 0)
             {
@@ -54,32 +53,24 @@ public class PlayerController : MonoBehaviour
             // Check if the player is grounded
             if (Input.GetButtonDown("Jump"))
             {
-                if (jumps < max_jumps && fell)
+                if (jumps<max_jumps&&fell)
                 {
                     Jump();
-                }
+                    jumps += 1;
+                    Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
+                    if (jumps == max_jumps){ jumps = 0;fell = false; }
+                 }
             }
+            
 
         }
         
-        // Flip the player's sprite depending on the direction of movement
-        if (horizontalInput > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (horizontalInput < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-
+        
     }
 
     private void Jump()
     {
         _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, jumpPower);
-        jumps += 1;
-        Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
-        if (jumps == max_jumps) { fell = false; }
     }
 
     private bool IsGrounded()
