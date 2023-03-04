@@ -36,9 +36,6 @@ public class PlayerController : MonoBehaviour
         // Move the player
         if(can_move)
         {
-            // Get horizontal input
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
-
             // Move the player
             Vector2 movement = new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
             _playerRigidbody.velocity = movement;
