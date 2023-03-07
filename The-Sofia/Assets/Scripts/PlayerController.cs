@@ -42,11 +42,12 @@ public class PlayerController : MonoBehaviour
             // Flip the player's sprite depending on the direction of movement
             if (horizontalInput > 0)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(-1, 1, 1);
+                
             }
             else if (horizontalInput < 0)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             }
 
             // Check if the player is grounded
