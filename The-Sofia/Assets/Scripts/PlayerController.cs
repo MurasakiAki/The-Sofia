@@ -7,9 +7,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed = 5.0f;
     [SerializeField] private float jumpPower = 5.0f;
     [SerializeField] private LayerMask groundLayer;
-    int jumps = 0;
+    private bool can_jump;
+    private bool is_grounded;
+    private int jumps = 0;
     public int max_jumps;
-    bool fell;
 
     public bool can_move;
 
@@ -24,10 +25,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (IsGrounded())
+        if (is_grounded)
         {
-            fell = true;
+            can_jump = true;
             jumps = 0;
+        }
+        else{
+            can_jump = false;
         }
 
         // Get horizontal input
@@ -53,10 +57,11 @@ public class PlayerController : MonoBehaviour
             // Check if the player is grounded
             if (Input.GetButtonDown("Jump"))
             {
-                if (jumps<max_jumps&&fell)
+                if (jumps < max_jumps && can_jump == true)
                 {
+                    jumps += 1;
                     Jump();
-                 }
+                }
             }
         }
     }
@@ -64,15 +69,17 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, jumpPower);
-        jumps += 1;
         Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
-        if (jumps == max_jumps) { fell = false; }
+        if(jumps == max_jumps){can_jump = false;}
     }
 
-    private bool IsGrounded()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.7f, groundLayer);
-        return hit.collider != null && hit.collider.CompareTag("Ground");
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            is_grounded = true;
+            Debug.Log(is_grounded);
+        }
     }
 
     public void set_movability(bool set)
