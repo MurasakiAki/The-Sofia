@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed = 5.0f;
     [SerializeField] private float jumpPower = 5.0f;
     [SerializeField] private LayerMask groundLayer;
-    private bool can_jump;
+    
     private bool is_grounded;
+    private bool can_jump;
     private int jumps = 0;
     public int max_jumps;
 
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
         jumps = 0;
         _playerRigidbody = GetComponent<Rigidbody2D>();
         can_move = true;
+        can_jump = false;
     }
 
     private void Update()
@@ -82,6 +84,10 @@ public class PlayerController : MonoBehaviour
             }
             
             Debug.Log(is_grounded);
+        }
+        else
+        {
+            is_grounded = false;
         }
     }
 
