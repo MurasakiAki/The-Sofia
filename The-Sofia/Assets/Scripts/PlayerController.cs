@@ -25,14 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (is_grounded)
-        {
-            can_jump = true;
-            jumps = 0;
-        }
-        else{
-            can_jump = false;
-        }
+        
 
         // Get horizontal input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -78,6 +71,16 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             is_grounded = true;
+            if (is_grounded)
+            {
+                can_jump = true;
+                jumps = 0;
+            }
+            else
+            {
+                can_jump = false;
+            }
+            
             Debug.Log(is_grounded);
         }
     }
