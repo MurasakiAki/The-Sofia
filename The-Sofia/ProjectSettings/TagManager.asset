@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Trap
+  - NextLevel
+  - PreviousLevel
   layers:
   - Default
   - TransparentFX

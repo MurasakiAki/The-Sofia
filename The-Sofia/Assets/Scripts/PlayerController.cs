@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float playerSpeed = 5.0f;
-    [SerializeField] private float jumpPower = 5.0f;
+    [SerializeField] private float playerSpeed;
+    [SerializeField] private float jumpPower;
     [SerializeField] private LayerMask groundLayer;
     
+    private string path = "Assets/Scripts/PlayerProperties.ini"; // Path to player properties file
     private bool is_grounded;
     private bool can_jump;
     private int jumps = 0;
@@ -23,12 +24,15 @@ public class PlayerController : MonoBehaviour
         _playerRigidbody = GetComponent<Rigidbody2D>();
         can_move = true;
         can_jump = false;
+
+        PropertyController.WriteProperty(path, "speed", "10");
+
+        playerSpeed =  float.Parse(PropertyController.GetValueOfKey(path, "speed"));
+        jumpPower = float.Parse(PropertyController.GetValueOfKey(path, "jump_force"));
     }
 
     private void Update()
     {
-        
-
         // Get horizontal input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
@@ -92,6 +96,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("NextLevel"))
+        {
+            GameLogic.NextLevel();
+        }
+    }
+
     public void set_movability(bool set)
     {
         can_move = set;
@@ -101,6 +113,5 @@ public class PlayerController : MonoBehaviour
     {
         set_movability(false);
         Debug.Log("It seems, that you have been impaled by nasty pointy sticks.");
-
     }
 }
