@@ -14,7 +14,7 @@ public class Trap : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("´Touch");
+        Debug.Log("Touch");
         if (other.CompareTag("Player"))
         {
             player.GetComponent<PlayerController>().Die();

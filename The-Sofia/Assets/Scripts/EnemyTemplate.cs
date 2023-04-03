@@ -6,6 +6,23 @@ using UnityEngine;
 
 public class EnemyTemplate : ScriptableObject
 {
+    //Name
     public string enemyName;
+
+    //Movement
+    public bool isStatic;
+    public bool isFlying;
+    public int enemySpeed;
+
+    //Health
+    public int maxHealth;
+
+    //Damage
+    public int damageRangeMin;
+    public int damageRangeMax;
+    public float playerDetectionRange;
+
+    //Visuals
+    public Sprite sprite;
 
 }

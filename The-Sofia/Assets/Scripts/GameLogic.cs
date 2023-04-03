@@ -19,6 +19,15 @@ public class GameLogic : MonoBehaviour
     void StartGame()
     {
 
+    }
+
+    void ContinueGame()
+    {
+
+    }
+
+    void Respawn()
+    {
 
     }
 
@@ -31,8 +40,4 @@ public class GameLogic : MonoBehaviour
         SceneManager.LoadScene(newLevelName);
     }
     
-    public void PreviousLevel()
-    {
-
-    }
 }

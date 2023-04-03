@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
         can_move = true;
         can_jump = false;
 
-        PropertyController.WriteProperty(path, "speed", "10");
+        //Setting speed of player
+        //PropertyController.WriteProperty(path, "speed", "10");
 
         playerSpeed =  float.Parse(PropertyController.GetValueOfKey(path, "speed"));
         jumpPower = float.Parse(PropertyController.GetValueOfKey(path, "jump_force"));
@@ -112,6 +113,6 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         set_movability(false);
-        Debug.Log("It seems, that you have been impaled by nasty pointy sticks.");
+        Debug.Log("Died");
     }
 }
