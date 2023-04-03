@@ -7,8 +7,8 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private EnemyTemplate template;
     private SpriteRenderer spriteRenderer;
-
     public GameObject player;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
@@ -20,15 +20,16 @@ public class EnemyController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = template.sprite;
 
-        //initialize player for sprite rotation
+        //initialize components
         player = GameObject.Find("Player");
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Flip();
-        
+        Move();
     }
 
     void Flip()
@@ -44,6 +45,25 @@ public class EnemyController : MonoBehaviour
 
     void Move()
     {
-        
+        if(template.isStatic == false)
+        {
+            if(PlayerDetected())
+            {
+                Vector2 direction = (player.transform.position - transform.position).normalized;
+                transform.Translate(direction * template.enemySpeed * Time.deltaTime);
+            }
+        }
+    }
+
+    public bool PlayerDetected()
+    {
+        if (Vector2.Distance(transform.position, player.transform.position) <= template.playerDetectionRange)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

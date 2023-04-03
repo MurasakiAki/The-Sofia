@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PythonTemplate
   m_EditorClassIdentifier: 
   enemyName: Python
-  isStatic: 1
+  isStatic: 0
   isFlying: 0
-  enemySpeed: 0
+  enemySpeed: 3
   maxHealth: 25
   damageRangeMin: 5
   damageRangeMax: 10
