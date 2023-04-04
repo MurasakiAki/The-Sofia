@@ -20,6 +20,7 @@ public class EnemyTemplate : ScriptableObject
     //Damage
     public int damageRangeMin;
     public int damageRangeMax;
+    public float hitRate;
     public float playerDetectionRange;
 
     //Visuals
