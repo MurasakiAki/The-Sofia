@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
     public GameObject player;
     private Rigidbody2D rb;
 
+    private float timeSinceLastShot = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class EnemyController : MonoBehaviour
     {
         Flip();
         Move();
+        Shoot();
     }
 
     void Flip()
@@ -69,11 +72,35 @@ public class EnemyController : MonoBehaviour
 
     void Shoot()
     {
-        if(PlayerDetected())
+        if(PlayerDetected() && timeSinceLastShot >= template.hitRate)
         {
             Vector2 targetLocation = (player.transform.position - transform.position).normalized;
-            GameObject newProjectile = Instantiate(template.projectile, transform.position, transform.rotation);
+            GameObject newProjectile = Instantiate(template.projectile, this.gameObject.transform.position, this.gameObject.transform.rotation);
             newProjectile.GetComponent<Rigidbody2D>().velocity = targetLocation * newProjectile.GetComponent<Projectile>().projectileSpeed;
+            newProjectile.GetComponent<Projectile>().initialPosition = transform.position;
+            newProjectile.GetComponent<Projectile>().distance = 10f;
+
+            // Destroy the bullet if it has traveled the specified distance
+            StartCoroutine(DestroyAfterDistance(newProjectile));
+
+            timeSinceLastShot = 0f;
         }
+        timeSinceLastShot += Time.deltaTime;
     }
+
+    IEnumerator DestroyAfterDistance(GameObject projectile)
+    {
+        float traveledDistance = 0f;
+        while (traveledDistance < projectile.GetComponent<Projectile>().distance)
+        {
+            traveledDistance = Vector2.Distance(projectile.GetComponent<Projectile>().initialPosition, projectile.transform.position);
+            yield return null;
+        }
+        if(projectile != null)
+        {
+            Destroy(projectile);
+        }   
+        
+    }
+
 }
