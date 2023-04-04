@@ -24,5 +24,6 @@ public class EnemyTemplate : ScriptableObject
 
     //Visuals
     public Sprite sprite;
+    public GameObject projectile;
 
 }

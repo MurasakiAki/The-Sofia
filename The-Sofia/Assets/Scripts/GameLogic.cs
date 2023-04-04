@@ -18,7 +18,7 @@ public class GameLogic : MonoBehaviour
 
     void StartGame()
     {
-
+        
     }
 
     void ContinueGame()

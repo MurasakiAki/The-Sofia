@@ -66,4 +66,14 @@ public class EnemyController : MonoBehaviour
             return false;
         }
     }
+
+    void Shoot()
+    {
+        if(PlayerDetected())
+        {
+            Vector2 targetLocation = (player.transform.position - transform.position).normalized;
+            GameObject newProjectile = Instantiate(template.projectile, transform.position, transform.rotation);
+            newProjectile.GetComponent<Rigidbody2D>().velocity = targetLocation * newProjectile.GetComponent<Projectile>().projectileSpeed;
+        }
+    }
 }
