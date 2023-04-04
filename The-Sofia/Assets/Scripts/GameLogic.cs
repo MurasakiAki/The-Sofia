@@ -17,6 +17,7 @@ public class GameLogic : MonoBehaviour
         { "crit_chance", 20},
         { "crit_multiplier", 150},
         { "coins", 0},
+        {"scena",1 },
     };
 
     private GameObject player;
@@ -31,10 +32,16 @@ public class GameLogic : MonoBehaviour
 
     void StartGame()
     {
-        foreach (var data in base_data)
+        foreach (KeyValuePair<string, double> entry in base_data)
         {
-            Debug.Log(data.Key + ": " + data.Value);
-        }
+            string key = entry.Key;
+            double value = entry.Value;
+            PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini",key,value.ToString());
+        };
+        player.GetComponent<PlayerController>().hp=100;
+        player.GetComponent<PlayerController>().max_hp = 100;
+        player.GetComponent<PlayerController>().playerSpeed = 8;
+
     }
 
     void ContinueGame()

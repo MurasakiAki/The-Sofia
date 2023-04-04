@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float playerSpeed;
+    [SerializeField] public float playerSpeed;
     [SerializeField] private float jumpPower;
     [SerializeField] private LayerMask groundLayer;
     
@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private bool can_jump;
     private int jumps = 0;
     public int max_jumps;
+    public int hp;
+    public int max_hp;
 
     public bool can_move;
 
