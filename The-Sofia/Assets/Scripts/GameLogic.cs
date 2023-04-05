@@ -54,7 +54,7 @@ public class GameLogic : MonoBehaviour
 
     void ContinueGame()
     {
-
+        
     }
 
     void Respawn()
@@ -69,6 +69,11 @@ public class GameLogic : MonoBehaviour
             };
         };
         SceneManager.LoadScene("Lobby");
+    }
+
+    void savePlayerPropperty()
+    {
+
     }
 
     public static void NextLevel()
