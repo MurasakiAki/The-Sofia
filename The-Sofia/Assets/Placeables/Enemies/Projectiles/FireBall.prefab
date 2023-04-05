@@ -137,4 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  projectileSpeed: 10
+  projectileSpeed: 20
+  distance: 10
+  initialPosition: {x: 0, y: 0}
+  traveledDistance: 0
