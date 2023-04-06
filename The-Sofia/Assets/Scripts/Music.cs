@@ -6,9 +6,10 @@ using UnityEngine.Audio;
 public class Music : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    public AudioMixerSnapshot MenuSnapShot;
-    public AudioMixerSnapshot Level1SnapShot;
+    public AudioMixerSnapshot snapshot1;
 
-
-
+    private void Start()
+    {
+        snapshot1.TransitionTo(0f);
+    }
 }
