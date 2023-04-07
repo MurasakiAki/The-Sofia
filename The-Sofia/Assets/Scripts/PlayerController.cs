@@ -4,43 +4,55 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] public float playerSpeed;
-    [SerializeField] private float jumpPower;
+    
     [SerializeField] private LayerMask groundLayer;
     
+    private Rigidbody2D playerRigidbody;
+
+
     private string path = "Assets/Scripts/PlayerProperties.ini"; // Path to player properties file
     private bool is_grounded;
     private bool can_jump;
     private int jumps = 0;
     public int max_jumps;
-    public int hp;
-    public int max_hp;
-    public int jump_force;
-    public int damage_range_min;
-    public int damage_range_max;
-    public int crit_chance;
-    public int crit_multiplier;
-    public int coins;
-
     public bool can_move;
 
-    private Rigidbody2D _playerRigidbody;
+    //PlayerProperties variables
+    public int max_health;
+    public int current_health;
+    public float speed;
+    public float jump_force;
+    public int damage_range_min;
+    public int damage_range_max;
+    public float crit_chance;
+    public float crit_multiplier;
+    public int coins;
 
-    private void Start()
+
+    private void Awake()
     {
         jumps = 0;
-        _playerRigidbody = GetComponent<Rigidbody2D>();
+        playerRigidbody = GetComponent<Rigidbody2D>();
         can_move = true;
         can_jump = false;
 
         //Setting speed of player
         //PropertyController.WriteProperty(path, "speed", "10");
 
-        playerSpeed =  float.Parse(PropertyController.GetValueOfKey(path, "speed"));
-        jumpPower = float.Parse(PropertyController.GetValueOfKey(path, "jump_force"));
+        //initializing player properites every time the player is awaken
+        max_health = int.Parse(PropertyController.GetValueOfKey(path, "max_health"));
+        current_health = max_health;
+        speed =  float.Parse(PropertyController.GetValueOfKey(path, "speed"));
+        jump_force = float.Parse(PropertyController.GetValueOfKey(path, "jump_force"));
+        damage_range_min = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_min"));
+        damage_range_max = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_max"));
+        crit_chance = float.Parse(PropertyController.GetValueOfKey(path, "crit_chance"));
+        crit_multiplier = float.Parse(PropertyController.GetValueOfKey(path, "crit_multiplier"));
+        coins = int.Parse(PropertyController.GetValueOfKey(path, "coins"));
+        
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // Get horizontal input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -49,8 +61,8 @@ public class PlayerController : MonoBehaviour
         if(can_move)
         {
             // Move the player
-            Vector2 movement = new Vector2(horizontalInput * playerSpeed, _playerRigidbody.velocity.y);
-            _playerRigidbody.velocity = movement;
+            Vector2 movement = new Vector2(horizontalInput * speed, playerRigidbody.velocity.y);
+            playerRigidbody.velocity = movement;
         
             // Flip the player's sprite depending on the direction of movement
             if (horizontalInput > 0)
@@ -77,8 +89,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        _playerRigidbody.velocity = new Vector2(_playerRigidbody.velocity.x, jumpPower);
-        Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
+        playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jump_force);
         if(jumps == max_jumps){can_jump = false;}
     }
 
@@ -96,8 +107,6 @@ public class PlayerController : MonoBehaviour
             {
                 can_jump = false;
             }
-            
-            Debug.Log(is_grounded);
         }
         else
         {
@@ -113,14 +122,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void set_movability(bool set)
+    public void SetMovability(bool set)
     {
         can_move = set;
     }
 
+    public static void TakeDamage(int damage)
+    {
+        GameObject player = GameObject.Find("Player");
+        
+        player.GetComponent<PlayerController>().current_health -= damage;
+        Debug.Log("Current health: " + player.GetComponent<PlayerController>().current_health);
+    }
+
     public void Die()
     {
-        set_movability(false);
+        SetMovability(false);
         Debug.Log("Died");
     }
 }
