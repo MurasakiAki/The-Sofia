@@ -10,11 +10,12 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public GameObject player;
     private Rigidbody2D rb;
-
+    private bool isGrounded;
+    private bool isJumping;
     private float timeSinceLastShot = 0f;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //set enemy name
         this.gameObject.name = template.enemyName;
@@ -29,13 +30,21 @@ public class EnemyController : MonoBehaviour
 
         //set enemy physics
         rb.mass = template.mass;
+
+        isJumping = false;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Flip();
         Move();
+        
+        if (!isJumping)
+        {
+            StartCoroutine(Jump());
+        }
+
         Shoot();
     }
 
@@ -82,8 +91,12 @@ public class EnemyController : MonoBehaviour
             {
                 System.Random random = new System.Random();
                 int damage = random.Next(template.damageRangeMin, template.damageRangeMax + 1);
+                float offsetX = (float)(random.NextDouble() * 0.8f - 0.4f);
+                float offsetY = (float)(random.NextDouble() * 0.8f - 0.4f);
 
                 Vector2 targetLocation = (player.transform.position - transform.position).normalized;
+                targetLocation.x += offsetX;
+                targetLocation.y += offsetY;
                 GameObject newProjectile = Instantiate(template.projectile, this.gameObject.transform.position, this.gameObject.transform.rotation);
 
                 newProjectile.GetComponent<Projectile>().damage = damage;
@@ -116,7 +129,24 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    private IEnumerator Jump()
+    {
+        isJumping = true;
+
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        Vector2 targetPosition = (Vector2)transform.position + direction * template.jumpLength;
+        targetPosition.y += template.jumpHeight;
+
+        GetComponent<Rigidbody2D>().AddForce((targetPosition - (Vector2)transform.position).normalized * template.jumpForce, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(template.jumpRate);
+
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero; // set velocity to zero
+
+        isJumping = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
@@ -124,5 +154,18 @@ public class EnemyController : MonoBehaviour
             int damage = random.Next(template.damageRangeMin, template.damageRangeMax + 1);
             PlayerController.TakeDamage(damage);
         }
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+    }
+    
 }

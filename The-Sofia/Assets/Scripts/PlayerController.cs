@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // Get horizontal input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -90,7 +90,6 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jump_force);
-        Debug.Log("jumps=" + jumps + ",max=" + max_jumps);
         if(jumps == max_jumps){can_jump = false;}
     }
 
@@ -108,8 +107,6 @@ public class PlayerController : MonoBehaviour
             {
                 can_jump = false;
             }
-            
-            Debug.Log(is_grounded);
         }
         else
         {

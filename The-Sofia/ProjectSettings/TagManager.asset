@@ -10,6 +10,8 @@ TagManager:
   - PreviousLevel
   - Enemy
   - Walls
+  - GroundCheckpoint
+  - WallCheckpoint
   layers:
   - Default
   - TransparentFX
