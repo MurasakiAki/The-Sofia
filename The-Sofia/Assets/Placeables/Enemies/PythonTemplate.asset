@@ -15,8 +15,10 @@ MonoBehaviour:
   enemyName: Python
   isStatic: 1
   isFlying: 0
+  isRange: 1
   enemySpeed: 0
   maxHealth: 25
+  mass: 10
   damageRangeMin: 5
   damageRangeMax: 10
   hitRate: 1

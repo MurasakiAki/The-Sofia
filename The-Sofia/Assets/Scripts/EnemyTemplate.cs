@@ -12,10 +12,14 @@ public class EnemyTemplate : ScriptableObject
     //Movement
     public bool isStatic;
     public bool isFlying;
+    public bool isRange;
     public int enemySpeed;
 
     //Health
     public int maxHealth;
+
+    //Physics
+    public int mass;
 
     //Damage
     public int damageRangeMin;

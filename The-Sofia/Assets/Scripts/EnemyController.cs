@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyController : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class EnemyController : MonoBehaviour
         //initialize components
         player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
+
+        //set enemy physics
+        rb.mass = template.mass;
     }
 
     // Update is called once per frame
@@ -72,20 +76,29 @@ public class EnemyController : MonoBehaviour
 
     void Shoot()
     {
-        if(PlayerDetected() && timeSinceLastShot >= template.hitRate)
+        if(template.isRange)
         {
-            Vector2 targetLocation = (player.transform.position - transform.position).normalized;
-            GameObject newProjectile = Instantiate(template.projectile, this.gameObject.transform.position, this.gameObject.transform.rotation);
-            newProjectile.GetComponent<Rigidbody2D>().velocity = targetLocation * newProjectile.GetComponent<Projectile>().projectileSpeed;
-            newProjectile.GetComponent<Projectile>().initialPosition = transform.position;
-            newProjectile.GetComponent<Projectile>().distance = 10f;
+            if(PlayerDetected() && timeSinceLastShot >= template.hitRate)
+            {
+                System.Random random = new System.Random();
+                int damage = random.Next(template.damageRangeMin, template.damageRangeMax + 1);
 
-            // Destroy the bullet if it has traveled the specified distance
-            StartCoroutine(DestroyAfterDistance(newProjectile));
+                Vector2 targetLocation = (player.transform.position - transform.position).normalized;
+                GameObject newProjectile = Instantiate(template.projectile, this.gameObject.transform.position, this.gameObject.transform.rotation);
 
-            timeSinceLastShot = 0f;
+                newProjectile.GetComponent<Projectile>().damage = damage;
+                newProjectile.GetComponent<Rigidbody2D>().velocity = targetLocation * newProjectile.GetComponent<Projectile>().projectileSpeed;
+                newProjectile.GetComponent<Projectile>().initialPosition = transform.position;
+                newProjectile.GetComponent<Projectile>().distance = 10f;
+
+
+                // Destroy the bullet if it has traveled the specified distance
+                StartCoroutine(DestroyAfterDistance(newProjectile));
+
+                timeSinceLastShot = 0f;
+            }
+            timeSinceLastShot += Time.deltaTime;
         }
-        timeSinceLastShot += Time.deltaTime;
     }
 
     IEnumerator DestroyAfterDistance(GameObject projectile)
@@ -103,4 +116,13 @@ public class EnemyController : MonoBehaviour
         
     }
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            System.Random random = new System.Random();
+            int damage = random.Next(template.damageRangeMin, template.damageRangeMax + 1);
+            PlayerController.TakeDamage(damage);
+        }
+    }
 }

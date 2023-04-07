@@ -7,7 +7,7 @@ public class MainManu : MonoBehaviour
 {
     public void PlayGame()
     {
-        new GameLogic().StartGame();
+        GameLogic.StartGame();
     }
 
     public void QuitGame()

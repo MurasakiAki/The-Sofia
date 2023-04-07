@@ -9,6 +9,7 @@ TagManager:
   - NextLevel
   - PreviousLevel
   - Enemy
+  - Walls
   layers:
   - Default
   - TransparentFX
