@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
 
-    public static Dictionary<string, double> base_data = new Dictionary<string, double>()
+    public static Dictionary<string, int> base_data = new Dictionary<string, int>()
     {
         { "max_health", 100 },
         { "current_health", 100 },
@@ -30,26 +32,46 @@ public class GameLogic : MonoBehaviour
 
 
 
-    void StartGame()
+    public void StartGame()
     {
-        foreach (KeyValuePair<string, double> entry in base_data)
+        SceneManager.LoadScene("Level" + base_data["scena"].ToString());
+        foreach (KeyValuePair<string, int> entry in base_data)
         {
             string key = entry.Key;
-            double value = entry.Value;
+            int value = entry.Value;
             PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini",key,value.ToString());
         };
-        player.GetComponent<PlayerController>().hp=100;
-        player.GetComponent<PlayerController>().max_hp = 100;
-        player.GetComponent<PlayerController>().playerSpeed = 8;
-
+        player.GetComponent<PlayerController>().hp = base_data["current_health"];
+        player.GetComponent<PlayerController>().max_hp = base_data["max_health"];
+        player.GetComponent<PlayerController>().playerSpeed = base_data["speed"];
+        player.GetComponent<PlayerController>().jump_force = base_data["jump_force"];
+        player.GetComponent<PlayerController>().damage_range_min = base_data["damage_range_min"];
+        player.GetComponent<PlayerController>().damage_range_max = base_data["damage_range_max"];
+        player.GetComponent<PlayerController>().crit_chance = base_data["crit_chance"];
+        player.GetComponent<PlayerController>().crit_multiplier = base_data["crit_multiplier"];
+        player.GetComponent<PlayerController>().coins = base_data["coins"];
     }
 
     void ContinueGame()
     {
-
+        
     }
 
     void Respawn()
+    {
+        foreach (KeyValuePair<string, int> entry in base_data)
+        {
+            string key = entry.Key;
+            int value = entry.Value;
+            if (!new string[] { "scena", "coins" }.Contains(key))
+            {
+                PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", key, value.ToString());
+            };
+        };
+        SceneManager.LoadScene("Lobby");
+    }
+
+    void savePlayerPropperty()
     {
 
     }

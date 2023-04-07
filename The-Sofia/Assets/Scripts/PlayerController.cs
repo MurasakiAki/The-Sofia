@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
     public int max_jumps;
     public int hp;
     public int max_hp;
+    public int jump_force;
+    public int damage_range_min;
+    public int damage_range_max;
+    public int crit_chance;
+    public int crit_multiplier;
+    public int coins;
 
     public bool can_move;
 
