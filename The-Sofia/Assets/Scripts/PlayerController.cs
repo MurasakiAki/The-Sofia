@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private bool is_grounded;
     private bool can_jump;
     private int jumps = 0;
-    public int max_jumps;
     public bool can_move;
 
     //PlayerProperties variables
@@ -22,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public int current_health;
     public float speed;
     public float jump_force;
+    public int max_jumps;
     public int damage_range_min;
     public int damage_range_max;
     public float crit_chance;
@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         current_health = max_health;
         speed =  float.Parse(PropertyController.GetValueOfKey(path, "speed"));
         jump_force = float.Parse(PropertyController.GetValueOfKey(path, "jump_force"));
+        max_jumps = int.Parse(PropertyController.GetValueOfKey(path, "max_jumps"));
         damage_range_min = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_min"));
         damage_range_max = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_max"));
         crit_chance = float.Parse(PropertyController.GetValueOfKey(path, "crit_chance"));
@@ -75,6 +76,16 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = new Vector3(1, 1, 1);
             }
 
+            if (is_grounded)
+            {
+                can_jump = true;
+                jumps = 0;
+            }
+            else
+            {
+                can_jump = false;
+            }
+
             // Check if the player is grounded
             if (Input.GetButtonDown("Jump"))
             {
@@ -98,17 +109,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             is_grounded = true;
-            if (is_grounded)
-            {
-                can_jump = true;
-                jumps = 0;
-            }
-            else
-            {
-                can_jump = false;
-            }
         }
-        else
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
         {
             is_grounded = false;
         }

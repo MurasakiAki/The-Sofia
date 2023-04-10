@@ -11,15 +11,15 @@ public class GameLogic : MonoBehaviour
     public static Dictionary<string, int> base_data = new Dictionary<string, int>()
     {
         { "max_health", 100 },
-        { "current_health", 100 },
         { "speed" , 8},
         { "jump_force", 6},
+        { "max_jumps", 1},
         { "damage_range_min", 1},
         { "damage_range_max", 5},
         { "crit_chance", 20},
         { "crit_multiplier", 150},
         { "coins", 0},
-        {"scena",1 },
+        { "scene",1 },
     };
 
     private GameObject player;
@@ -34,7 +34,7 @@ public class GameLogic : MonoBehaviour
 
     public static void StartGame()
     {
-        SceneManager.LoadScene("Level" + base_data["scena"].ToString());
+        SceneManager.LoadScene("Level" + base_data["scene"].ToString());
         foreach (KeyValuePair<string, int> entry in base_data)
         {
             string key = entry.Key;
@@ -54,7 +54,7 @@ public class GameLogic : MonoBehaviour
         {
             string key = entry.Key;
             int value = entry.Value;
-            if (!new string[] { "scena", "coins" }.Contains(key))
+            if (!new string[] { "scene", "coins" }.Contains(key))
             {
                 PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", key, value.ToString());
             };
