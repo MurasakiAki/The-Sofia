@@ -48,7 +48,7 @@ public class EnemyController : MonoBehaviour
         Shoot();
     }
 
-    void Flip()
+    private void Flip()
     {
         if(player.transform.position.x > this.gameObject.transform.position.x)
         {
@@ -59,9 +59,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void Move()
+    private void Move()
     {
-        if(template.isStatic == false)
+        if(template.isFollowing)
         {
             if(PlayerDetected())
             {
@@ -71,7 +71,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public bool PlayerDetected()
+    private bool PlayerDetected()
     {
         if (Vector2.Distance(transform.position, player.transform.position) <= template.playerDetectionRange)
         {
@@ -83,7 +83,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void Shoot()
+    private void Shoot()
     {
         if(template.isRange)
         {
@@ -114,7 +114,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    IEnumerator DestroyAfterDistance(GameObject projectile)
+    private IEnumerator DestroyAfterDistance(GameObject projectile)
     {
         float traveledDistance = 0f;
         while (traveledDistance < projectile.GetComponent<Projectile>().distance)
@@ -157,6 +157,7 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+            rb.velocity = Vector2.zero;
         }
     }
 

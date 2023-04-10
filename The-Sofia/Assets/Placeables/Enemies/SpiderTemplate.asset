@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Spider
   isStatic: 0
+  isFollowing: 0
   isFlying: 0
   isRange: 0
   isJumping: 1
   enemySpeed: 1
-  jumpLength: 2
-  jumpHeight: 3
   jumpForce: 50
-  jumpRate: 10
+  jumpHeight: 3
+  jumpLength: 3
+  jumpRate: 2
   maxHealth: 25
   mass: 5
   damageRangeMin: 5

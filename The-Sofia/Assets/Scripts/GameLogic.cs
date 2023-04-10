@@ -22,16 +22,6 @@ public class GameLogic : MonoBehaviour
         { "scene",1 },
     };
 
-    private GameObject player;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.Find("Player");
-    }
-
-
-
     public static void StartGame()
     {
         SceneManager.LoadScene("Level" + base_data["scene"].ToString());
@@ -60,11 +50,6 @@ public class GameLogic : MonoBehaviour
             };
         };
         SceneManager.LoadScene("Lobby");
-    }
-
-    void savePlayerPropperty()
-    {
-
     }
 
     public static void NextLevel()

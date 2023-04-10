@@ -11,13 +11,14 @@ public class EnemyTemplate : ScriptableObject
 
     //Movement
     public bool isStatic; //won't move
+    public bool isFollowing; //follows player
     public bool isFlying; //will be flying
     public bool isRange; //the enemy will be shooting projectiles
     public bool isJumping; //if enemy will be jumping, for instance spider
     public float enemySpeed; //speed of enemy
-    public float jumpLength;
-    public float jumpHeight; 
     public float jumpForce; //force of enemy jump
+    public float jumpHeight; //height of enemy jump
+    public float jumpLength; //length of enemy jump
     public float jumpRate; // rate jump rate
 
     //Health
