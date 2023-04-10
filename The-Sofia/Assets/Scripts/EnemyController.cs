@@ -66,6 +66,7 @@ public class EnemyController : MonoBehaviour
             if(PlayerDetected())
             {
                 Vector2 direction = (player.transform.position - transform.position).normalized;
+                direction.y = 0;
                 transform.Translate(direction * template.enemySpeed * Time.deltaTime);
             }
         }

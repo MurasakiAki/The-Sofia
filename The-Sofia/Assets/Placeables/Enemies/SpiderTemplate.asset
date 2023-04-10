@@ -21,7 +21,7 @@ MonoBehaviour:
   enemySpeed: 1
   jumpForce: 50
   jumpHeight: 3
-  jumpLength: 3
+  jumpLength: 1.5
   jumpRate: 2
   maxHealth: 25
   mass: 5
