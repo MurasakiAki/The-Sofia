@@ -14198,7 +14198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 24dedf721945d07419f57aee112391c7, type: 2}
   snapshot1: {fileID: -7061982712347883576, guid: 24dedf721945d07419f57aee112391c7, type: 2}
-  musicSlider: {fileID: 0}
+  musicSlider: {fileID: 1173020029}
 --- !u!1001 &1545179032
 PrefabInstance:
   m_ObjectHideFlags: 0
