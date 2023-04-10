@@ -12,7 +12,9 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool isJumping;
+    private bool canAttack = false;
     private float timeSinceLastShot = 0f;
+    private float timeToNextAttack;
 
     // Start is called before the first frame update
     void Awake()
@@ -27,9 +29,15 @@ public class EnemyController : MonoBehaviour
         //initialize components
         player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
+        timeToNextAttack = template.hitRate;
 
         //set enemy physics
         rb.mass = template.mass;
+        if(template.isStatic)
+        {
+            rb.gravityScale = 0f;
+        }
+        
 
         isJumping = false;
     }
@@ -44,7 +52,7 @@ public class EnemyController : MonoBehaviour
         {
             StartCoroutine(Jump());
         }
-
+        Attack();
         Shoot();
     }
 
@@ -70,6 +78,12 @@ public class EnemyController : MonoBehaviour
                 transform.Translate(direction * template.enemySpeed * Time.deltaTime);
             }
         }
+        
+        if(template.isStatic)
+        {
+            rb.velocity = Vector2.zero;
+        }
+        
     }
 
     private bool PlayerDetected()
@@ -82,6 +96,31 @@ public class EnemyController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void Attack()
+    {
+        if(canAttack)
+        {
+            if(timeToNextAttack == template.hitRate || timeToNextAttack <= 0)
+            {
+                System.Random random = new System.Random();
+                int damage = random.Next(template.damageRangeMin, template.damageRangeMax + 1);
+                PlayerController.TakeDamage(damage);
+                timeToNextAttack = template.hitRate;
+
+                if(timeToNextAttack <= 0)
+                {
+                    timeToNextAttack = template.hitRate;
+                }
+            }
+
+            timeToNextAttack -= Time.deltaTime;
+
+        }else
+        {
+            timeToNextAttack = template.hitRate;
+        }   
     }
 
     private void Shoot()
@@ -151,9 +190,7 @@ public class EnemyController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            System.Random random = new System.Random();
-            int damage = random.Next(template.damageRangeMin, template.damageRangeMax + 1);
-            PlayerController.TakeDamage(damage);
+            canAttack = true;
         }
         if (other.gameObject.CompareTag("Ground"))
         {
@@ -164,10 +201,14 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            canAttack = false;
+        }
+
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
         }
     }
-    
 }
