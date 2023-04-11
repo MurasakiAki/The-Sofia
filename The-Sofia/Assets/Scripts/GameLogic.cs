@@ -22,9 +22,10 @@ public class GameLogic : MonoBehaviour
         { "scene",1 },
     };
 
+    //Starts a new game
     public static void StartGame()
     {
-        SceneManager.LoadScene("Level" + base_data["scene"].ToString());
+        SceneManager.LoadScene("Lobby");
         foreach (KeyValuePair<string, int> entry in base_data)
         {
             string key = entry.Key;
@@ -33,12 +34,13 @@ public class GameLogic : MonoBehaviour
         };
     }
 
-    void ContinueGame()
+    public static void ContinueGame()
     {
         
     }
 
-    void Respawn()
+    //Respawns player in the lobby, sets default settings
+    public static void Respawn()
     {
         foreach (KeyValuePair<string, int> entry in base_data)
         {
@@ -52,13 +54,27 @@ public class GameLogic : MonoBehaviour
         SceneManager.LoadScene("Lobby");
     }
 
+    //Transfer player to another level
     public static void NextLevel()
     {
         string levelName = SceneManager.GetActiveScene().name;
-        int levelNumber = int.Parse(levelName.Substring(5)); // extract the number from the string
-        levelNumber++; // increase the number
-        string newLevelName = levelName.Replace("Level" + (levelNumber - 1), "Level" + levelNumber);
-        SceneManager.LoadScene(newLevelName);
+        if(levelName == "Lobby")
+        {
+            SceneManager.LoadScene("Level1");
+        }else
+        {
+            int levelNumber = GetLevelNumber(levelName);
+            levelNumber++; // increase the number
+            string newLevelName = levelName.Replace("Level" + (levelNumber - 1), "Level" + levelNumber);
+            SceneManager.LoadScene(newLevelName);
+        }   
     }
+
+    public static int GetLevelNumber(string levelName)
+    {
+        int levelNumber = int.Parse(levelName.Substring(5)); // extract the number from the string
+
+        return levelNumber;
+    }  
     
 }

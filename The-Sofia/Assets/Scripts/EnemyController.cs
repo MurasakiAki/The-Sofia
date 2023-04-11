@@ -142,31 +142,11 @@ public class EnemyController : MonoBehaviour
                 newProjectile.GetComponent<Projectile>().damage = damage;
                 newProjectile.GetComponent<Rigidbody2D>().velocity = targetLocation * newProjectile.GetComponent<Projectile>().projectileSpeed;
                 newProjectile.GetComponent<Projectile>().initialPosition = transform.position;
-                newProjectile.GetComponent<Projectile>().distance = 10f;
-
-
-                // Destroy the bullet if it has traveled the specified distance
-                StartCoroutine(DestroyAfterDistance(newProjectile));
 
                 timeSinceLastShot = 0f;
             }
             timeSinceLastShot += Time.deltaTime;
         }
-    }
-
-    private IEnumerator DestroyAfterDistance(GameObject projectile)
-    {
-        float traveledDistance = 0f;
-        while (traveledDistance < projectile.GetComponent<Projectile>().distance)
-        {
-            traveledDistance = Vector2.Distance(projectile.GetComponent<Projectile>().initialPosition, projectile.transform.position);
-            yield return null;
-        }
-        if(projectile != null)
-        {
-            Destroy(projectile);
-        }   
-        
     }
 
     private IEnumerator Jump()
