@@ -22,7 +22,7 @@ public class EnemyTemplate : ScriptableObject
     public float jumpRate; // rate jump rate
 
     //Health
-    public int maxHealth; //max health of player
+    public int maxHealth; //max health of enemy
 
     //Physics
     public int mass; //mass of enemy, can influence enemy knockback
