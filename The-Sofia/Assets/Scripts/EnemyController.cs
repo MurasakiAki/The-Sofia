@@ -52,6 +52,7 @@ public class EnemyController : MonoBehaviour
         {
             StartCoroutine(Jump());
         }
+        
         Attack();
         Shoot();
     }
