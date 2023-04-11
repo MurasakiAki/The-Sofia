@@ -10,23 +10,27 @@ public class Music : MonoBehaviour
     public AudioMixer audioMixer;
     public AudioMixerSnapshot snapshot1;
     public Slider musicSlider;
-    //private float sliderVolume = 0; 
+
 
     private void Start()
     {
-        //musicSlider.value = sliderVolume;
         snapshot1.TransitionTo(musicSlider.value);
+        musicSlider.value = PlayerPrefs.GetFloat(Audio.SAV_VOL, 0f);
     }
 
     private void Awake()
     {
         musicSlider.onValueChanged.AddListener(MusicVolume);
-        //sliderVolume = musicSlider.value;
     }
 
     private void MusicVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetFloat(Audio.SAV_VOL, musicSlider.value);
     }
 
 
