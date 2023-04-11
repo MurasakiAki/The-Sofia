@@ -17,9 +17,18 @@ public class Projectile : MonoBehaviour
         initialPosition = transform.position;
     }
 
+    void FixedUpdate()
+    {   
+        float distanceFromInit = this.gameObject.transform.position.x - initialPosition.x;
+        if(Mathf.Abs(distanceFromInit) >= distance)
+        {
+            Destroy(this.gameObject);
+        }    
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Ground"))
+        if(other.CompareTag("Ground") || other.CompareTag("Walls"))
         {
             Destroy(gameObject);
         }
