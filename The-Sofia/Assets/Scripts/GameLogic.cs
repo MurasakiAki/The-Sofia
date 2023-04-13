@@ -25,18 +25,32 @@ public class GameLogic : MonoBehaviour
     //Starts a new game
     public static void StartGame()
     {
-        SceneManager.LoadScene("Lobby");
         foreach (KeyValuePair<string, int> entry in base_data)
         {
             string key = entry.Key;
             int value = entry.Value;
             PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini",key,value.ToString());
         };
+        SceneManager.LoadScene("Lobby");
     }
 
     public static void ContinueGame()
     {
-        
+        int sceneNumber=int.Parse(PropertyController.GetValueOfKey("Assets/Scripts/PlayerProperties.ini", "scene"));
+        if (sceneNumber==0)
+        {
+            SceneManager.LoadScene("Lobby");
+        }
+        else
+        {
+            SceneManager.LoadScene("Level"+sceneNumber);
+        }
+    }
+
+    //TODO
+    public static void SaveGame()
+    {
+
     }
 
     //Respawns player in the lobby, sets default settings
@@ -55,6 +69,8 @@ public class GameLogic : MonoBehaviour
     }
 
     //Transfer player to another level
+
+    // TODO udìlat ukládání do souboru
     public static void NextLevel()
     {
         string levelName = SceneManager.GetActiveScene().name;
