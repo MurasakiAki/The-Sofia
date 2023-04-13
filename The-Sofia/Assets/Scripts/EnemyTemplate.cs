@@ -7,24 +7,34 @@ using UnityEngine;
 public class EnemyTemplate : ScriptableObject
 {
     //Name
-    public string enemyName;
+    public string enemyName; //enemy name
 
     //Movement
-    public bool isStatic;
-    public bool isFlying;
-    public int enemySpeed;
+    public bool isStatic; //won't move
+    public bool isFollowing; //follows player
+    public bool isFlying; //will be flying
+    public bool isRange; //the enemy will be shooting projectiles
+    public bool isJumping; //if enemy will be jumping, for instance spider
+    public float enemySpeed; //speed of enemy
+    public float jumpForce; //force of enemy jump
+    public float jumpHeight; //height of enemy jump
+    public float jumpLength; //length of enemy jump
+    public float jumpRate; // rate jump rate
 
     //Health
-    public int maxHealth;
+    public int maxHealth; //max health of enemy
+
+    //Physics
+    public int mass; //mass of enemy, can influence enemy knockback
 
     //Damage
-    public int damageRangeMin;
-    public int damageRangeMax;
-    public float hitRate;
-    public float playerDetectionRange;
+    public int damageRangeMin; //a minimum damage an enemy can make
+    public int damageRangeMax; //a maximum damage an enemy can make
+    public float hitRate; //how fast enemy can attack, for instance if hitRate = 1; enemy will attack each second
+    public float playerDetectionRange; //an invisible range for detecting player
 
     //Visuals
-    public Sprite sprite;
-    public GameObject projectile;
+    public Sprite sprite; //enemy sprite
+    public GameObject projectile; //if isRange enemy will need a projectile to shoot
 
 }

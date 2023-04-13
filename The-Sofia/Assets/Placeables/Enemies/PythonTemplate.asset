@@ -14,12 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Python
   isStatic: 1
+  isFollowing: 0
   isFlying: 0
+  isRange: 1
+  isJumping: 0
   enemySpeed: 0
+  jumpForce: 0
+  jumpHeight: 0
+  jumpLength: 0
+  jumpRate: 0
   maxHealth: 25
+  mass: 10
   damageRangeMin: 5
   damageRangeMax: 10
   hitRate: 1
-  playerDetectionRange: 6
+  playerDetectionRange: 10
   sprite: {fileID: 21300000, guid: a8531262beab2834790a1cde2080bab8, type: 3}
   projectile: {fileID: 584180982381066339, guid: 5aa942f9905a311c2879080e41407c45, type: 3}
