@@ -40,17 +40,115 @@ public class PlayerController : MonoBehaviour
         //PropertyController.WriteProperty(path, "speed", "10");
 
         //initializing player properites every time the player is awaken
-        max_health = int.Parse(PropertyController.GetValueOfKey(path, "max_health"));
-        current_health = int.Parse(PropertyController.GetValueOfKey(path, "current_health"));
-        speed =  float.Parse(PropertyController.GetValueOfKey(path, "speed"));
-        jump_force = float.Parse(PropertyController.GetValueOfKey(path, "jump_force"));
-        max_jumps = int.Parse(PropertyController.GetValueOfKey(path, "max_jumps"));
-        damage_range_min = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_min"));
-        damage_range_max = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_max"));
-        attackRange = float.Parse(PropertyController.GetValueOfKey(path, "attackRange"));
-        crit_chance = float.Parse(PropertyController.GetValueOfKey(path, "crit_chance"));
-        crit_multiplier = int.Parse(PropertyController.GetValueOfKey(path, "crit_multiplier"));
-        coins = int.Parse(PropertyController.GetValueOfKey(path, "coins"));
+        string maxHealthString = PropertyController.GetValueOfKey(path, "max_health");
+        if (maxHealthString != null)
+        {
+            max_health = int.Parse(maxHealthString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'max_health' property from file");
+        }
+
+        string currentHealthString = PropertyController.GetValueOfKey(path, "current_health");
+        if (currentHealthString != null)
+        {
+            current_health = int.Parse(currentHealthString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'current_health' property from file");
+        }
+
+        string speedString = PropertyController.GetValueOfKey(path, "speed");
+        if (speedString != null)
+        {
+            speed = float.Parse(speedString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'speed' property from file");
+        }
+
+        string jumpForceString = PropertyController.GetValueOfKey(path, "jump_force");
+        if (jumpForceString != null)
+        {
+            jump_force = float.Parse(jumpForceString);
+        }
+        else
+        {   
+            Debug.LogError("Failed to read 'jump_force' property from file");
+        }
+
+        string maxJumpsString = PropertyController.GetValueOfKey(path, "max_jumps");
+        if (maxJumpsString != null)
+        {
+            max_jumps = int.Parse(maxJumpsString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'max_jumps' property from file");
+        }
+
+        string damageRangeMinString = PropertyController.GetValueOfKey(path, "damage_range_min");
+        if (damageRangeMinString != null)
+        {
+            damage_range_min = int.Parse(damageRangeMinString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'damage_range_min' property from file");
+        }
+
+        string damageRangeMaxString = PropertyController.GetValueOfKey(path, "damage_range_max");
+        if (damageRangeMaxString != null)
+        {
+            damage_range_max = int.Parse(damageRangeMaxString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'damage_range_max' property from file");
+        }
+
+        string attackRangeString = PropertyController.GetValueOfKey(path, "attack_range");
+        if (attackRangeString != null)
+        {
+            attackRange = float.Parse(attackRangeString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'attackRange' property from file");
+        }
+
+        string critChanceString = PropertyController.GetValueOfKey(path, "crit_chance");
+        if (critChanceString != null)
+        {
+            crit_chance = float.Parse(critChanceString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'crit_chance' property from file");
+        }
+
+        string critMultiplierString = PropertyController.GetValueOfKey(path, "crit_multiplier");
+        if (critMultiplierString != null)
+        {
+            crit_multiplier = int.Parse(critMultiplierString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'crit_multiplier' property from file");
+        }
+
+        string coinsString = PropertyController.GetValueOfKey(path, "coins");
+        if (coinsString != null)
+        {
+            coins = int.Parse(coinsString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'coins' property from file");
+        }
         
     }
 
