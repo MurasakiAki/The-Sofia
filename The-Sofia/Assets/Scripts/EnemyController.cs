@@ -6,7 +6,7 @@ using System;
 public class EnemyController : MonoBehaviour
 {
 
-    [SerializeField] private EnemyTemplate template;
+    public EnemyTemplate template;
     private SpriteRenderer spriteRenderer;
     public GameObject player;
     private Rigidbody2D rb;
@@ -107,7 +107,7 @@ public class EnemyController : MonoBehaviour
             {
                 System.Random random = new System.Random();
                 int damage = random.Next(template.damageRangeMin, template.damageRangeMax + 1);
-                PlayerController.TakeDamage(damage);
+                //PlayerController.TakeDamage(damage);
                 timeToNextAttack = template.hitRate;
 
                 if(timeToNextAttack <= 0)

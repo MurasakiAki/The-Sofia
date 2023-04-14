@@ -11,14 +11,16 @@ public class GameLogic : MonoBehaviour
     public static Dictionary<string, int> base_data = new Dictionary<string, int>()
     {
         { "max_health", 100 },
-        { "speed" , 8},
-        { "jump_force", 6},
-        { "max_jumps", 1},
-        { "damage_range_min", 1},
-        { "damage_range_max", 5},
-        { "crit_chance", 20},
-        { "crit_multiplier", 150},
-        { "coins", 0},
+        { "current_health", 100 },
+        { "speed" , 8 },
+        { "jump_force", 6 },
+        { "max_jumps", 1 },
+        { "damage_range_min", 1 },
+        { "damage_range_max", 5 },
+        { "attack_range", 50 },
+        { "crit_chance", 20 },
+        { "crit_multiplier", 2 },
+        { "coins", 0 },
         { "scene",1 },
     };
 
@@ -48,6 +50,7 @@ public class GameLogic : MonoBehaviour
     }
 
     //TODO
+    //In saving, have to multiply attack_range by 100
     public static void SaveGame()
     {
 
@@ -70,7 +73,7 @@ public class GameLogic : MonoBehaviour
 
     //Transfer player to another level
 
-    // TODO udìlat ukládání do souboru
+    // TODO udï¿½lat uklï¿½dï¿½nï¿½ do souboru
     public static void NextLevel()
     {
         string levelName = SceneManager.GetActiveScene().name;

@@ -6,9 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     
     [SerializeField] private LayerMask groundLayer;
-    
+        
     private Rigidbody2D playerRigidbody;
-
 
     private string path = "Assets/Scripts/PlayerProperties.ini"; // Path to player properties file
     private bool is_grounded;
@@ -24,8 +23,9 @@ public class PlayerController : MonoBehaviour
     public int max_jumps;
     public int damage_range_min;
     public int damage_range_max;
+    public float attackRange;
     public float crit_chance;
-    public float crit_multiplier;
+    public int crit_multiplier;
     public int coins;
 
 
@@ -41,19 +41,20 @@ public class PlayerController : MonoBehaviour
 
         //initializing player properites every time the player is awaken
         max_health = int.Parse(PropertyController.GetValueOfKey(path, "max_health"));
-        current_health = max_health;
+        current_health = int.Parse(PropertyController.GetValueOfKey(path, "current_health"));
         speed =  float.Parse(PropertyController.GetValueOfKey(path, "speed"));
         jump_force = float.Parse(PropertyController.GetValueOfKey(path, "jump_force"));
         max_jumps = int.Parse(PropertyController.GetValueOfKey(path, "max_jumps"));
         damage_range_min = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_min"));
         damage_range_max = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_max"));
+        attackRange = float.Parse(PropertyController.GetValueOfKey(path, "attackRange")) / 100;
         crit_chance = float.Parse(PropertyController.GetValueOfKey(path, "crit_chance"));
-        crit_multiplier = float.Parse(PropertyController.GetValueOfKey(path, "crit_multiplier"));
+        crit_multiplier = int.Parse(PropertyController.GetValueOfKey(path, "crit_multiplier"));
         coins = int.Parse(PropertyController.GetValueOfKey(path, "coins"));
         
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         // Get horizontal input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -96,6 +97,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        
     }
 
     private void Jump()
@@ -133,17 +136,4 @@ public class PlayerController : MonoBehaviour
         can_move = set;
     }
 
-    public static void TakeDamage(int damage)
-    {
-        GameObject player = GameObject.Find("Player");
-        
-        player.GetComponent<PlayerController>().current_health -= damage;
-        Debug.Log("Current health: " + player.GetComponent<PlayerController>().current_health);
-    }
-
-    public void Die()
-    {
-        SetMovability(false);
-        Debug.Log("Died");
-    }
 }

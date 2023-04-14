@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4374258279505351633}
   - component: {fileID: 4374258279505351634}
   - component: {fileID: 4374258279505351213}
+  - component: {fileID: 3309986327763121005}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -32,6 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5920517220249229563}
   - {fileID: 4374258279579928136}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -147,13 +149,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd288302008761513931bf95559dfc06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 6
-  jumpPower: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  max_jumps: 2
   can_move: 0
+  max_health: 0
+  speed: 0
+  jump_force: 0
+  max_jumps: 2
+  damage_range_min: 0
+  damage_range_max: 0
+  attackRange: 0
+  crit_chance: 0
+  crit_multiplier: 0
+  coins: 0
+--- !u!114 &3309986327763121005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4374258279505351638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31298ed9ae3cb1d5882b650d9114d74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: Player
+  maxHealth: 0
+  currentHealth: 0
 --- !u!1 &4374258279579928143
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +209,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4374258279505351635}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &4374258279579928137
 Camera:
@@ -238,3 +262,34 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4374258279579928143}
   m_Enabled: 1
+--- !u!1 &4701263103303230357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5920517220249229563}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5920517220249229563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4701263103303230357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4374258279505351635}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
