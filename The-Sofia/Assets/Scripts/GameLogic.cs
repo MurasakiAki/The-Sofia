@@ -21,7 +21,7 @@ public class GameLogic : MonoBehaviour
         { "crit_chance", 20 },
         { "crit_multiplier", 2 },
         { "coins", 0 },
-        { "scene",1 },
+        { "scene", 1 },
     };
 
     //Starts a new game

@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         max_jumps = int.Parse(PropertyController.GetValueOfKey(path, "max_jumps"));
         damage_range_min = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_min"));
         damage_range_max = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_max"));
-        attackRange = float.Parse(PropertyController.GetValueOfKey(path, "attackRange")) / 100;
+        attackRange = float.Parse(PropertyController.GetValueOfKey(path, "attackRange"));
         crit_chance = float.Parse(PropertyController.GetValueOfKey(path, "crit_chance"));
         crit_multiplier = int.Parse(PropertyController.GetValueOfKey(path, "crit_multiplier"));
         coins = int.Parse(PropertyController.GetValueOfKey(path, "coins"));
