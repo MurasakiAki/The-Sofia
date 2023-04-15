@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         if (maxHealthString != null)
         {
             max_health = int.Parse(maxHealthString);
+            Debug.Log("Max HP: " + max_health);
         }
         else
         {

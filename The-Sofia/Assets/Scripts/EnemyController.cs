@@ -107,7 +107,7 @@ public class EnemyController : MonoBehaviour
             {
                 System.Random random = new System.Random();
                 int damage = random.Next(template.damageRangeMin, template.damageRangeMax + 1);
-                //PlayerController.TakeDamage(damage);
+                player.GetComponent<Health>().TakeDamage(damage);
                 timeToNextAttack = template.hitRate;
 
                 if(timeToNextAttack <= 0)

@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     public int currentHealth;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         switch (type)
         {
@@ -24,6 +24,7 @@ public class Health : MonoBehaviour
                 break;
         }
         
+        Debug.Log("Max HP in Health: " + maxHealth);
         currentHealth = maxHealth;
     }
 
@@ -31,6 +32,8 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+
+        
 
         if(currentHealth <= 0)
         {
@@ -40,6 +43,7 @@ public class Health : MonoBehaviour
         if(type == "Player")
         {    
             this.gameObject.GetComponent<PlayerController>().current_health = currentHealth;
+            Debug.Log("Player current health: " + currentHealth);
         }        
 
     }
