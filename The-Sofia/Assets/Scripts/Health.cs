@@ -8,13 +8,14 @@ public class Health : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
 
-    // Start is called before the first frame update
+    // Initialize maxHealth and currentHealth, if player has a save with less current health it will be loaded
     void Start()
     {
         switch (type)
         {
             case "Player":
                 maxHealth = this.gameObject.GetComponent<PlayerController>().max_health;
+                currentHealth = this.gameObject.GetComponent<PlayerController>().current_health;
                 break;
             case "Enemy":
                 maxHealth = gameObject.GetComponent<EnemyController>().template.maxHealth;
@@ -25,16 +26,18 @@ public class Health : MonoBehaviour
         }
         
         Debug.Log("Max HP in Health: " + maxHealth);
-        currentHealth = maxHealth;
+        if(type != "Player")
+        {
+            currentHealth = maxHealth;
+        }
+        
     }
 
     //TakeDamage
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
-        
-
+        Debug.Log(currentHealth);
         if(currentHealth <= 0)
         {
             Die();
@@ -47,6 +50,7 @@ public class Health : MonoBehaviour
         }        
 
     }
+    
     //Heal
     public void Heal(int amount)
     {
@@ -54,6 +58,7 @@ public class Health : MonoBehaviour
         if(currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
+            this.gameObject.GetComponent<PlayerController>().current_health = currentHealth;
         }
     }
     //Die

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,8 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private LayerMask hitableLayer;
 
-    private GameObject player;
+    public GameObject player;
     public Transform attackPoint;
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.Find("Player");
-    }
 
     // Update is called once per frame
     void Update()
@@ -30,7 +26,6 @@ public class PlayerAttack : MonoBehaviour
 
         //Detecting enemies
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, player.GetComponent<PlayerController>().attackRange, hitableLayer);
-        //if has method take damage
 
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -39,13 +34,21 @@ public class PlayerAttack : MonoBehaviour
             {
                 System.Random random = new System.Random();
                 int damage = random.Next(player.GetComponent<PlayerController>().damage_range_min, player.GetComponent<PlayerController>().damage_range_max + 1);
+                //calculating crit chance and applying multiplier
                 if(random.Next(0, 101) <= player.GetComponent<PlayerController>().crit_chance)
                 {
-                    damage *= player.GetComponent<PlayerController>().crit_multiplier;
+                    damage = Convert.ToInt32(damage * player.GetComponent<PlayerController>().crit_multiplier);
                 }
                 health.TakeDamage(damage);
             }
         }
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Draw a sphere around the attack point in the editor for debugging purposes
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, 0.5f); //player.GetComponent<PlayerController>().attackRange
     }
 }

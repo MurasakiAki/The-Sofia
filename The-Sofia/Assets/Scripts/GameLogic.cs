@@ -19,7 +19,7 @@ public class GameLogic : MonoBehaviour
         { "damage_range_max", 5 },
         { "attack_range", 50 },
         { "crit_chance", 20 },
-        { "crit_multiplier", 2 },
+        { "crit_multiplier", 150 },
         { "coins", 0 },
         { "scene", 1 },
     };

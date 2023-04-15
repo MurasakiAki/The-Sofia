@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
     public int damage_range_min;
     public int damage_range_max;
     public float attackRange;
-    public float crit_chance;
-    public int crit_multiplier;
+    public int crit_chance;
+    public float crit_multiplier;
     public int coins;
 
 
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
         string critChanceString = PropertyController.GetValueOfKey(path, "crit_chance");
         if (critChanceString != null)
         {
-            crit_chance = float.Parse(critChanceString);
+            crit_chance = int.Parse(critChanceString);
         }
         else
         {
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
         string critMultiplierString = PropertyController.GetValueOfKey(path, "crit_multiplier");
         if (critMultiplierString != null)
         {
-            crit_multiplier = int.Parse(critMultiplierString);
+            crit_multiplier = float.Parse(critMultiplierString) / 100;
         }
         else
         {

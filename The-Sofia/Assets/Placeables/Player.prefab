@@ -194,7 +194,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitableLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 64
+  player: {fileID: 4374258279505351638}
   attackPoint: {fileID: 5920517220249229563}
 --- !u!1 &4374258279579928143
 GameObject:
