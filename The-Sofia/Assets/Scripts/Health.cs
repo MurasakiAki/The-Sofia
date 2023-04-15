@@ -17,10 +17,10 @@ public class Health : MonoBehaviour
                 maxHealth = this.gameObject.GetComponent<PlayerController>().max_health;
                 break;
             case "Enemy":
-                maxHealth = gameObject.GetComponent<EnemyTemplate>().maxHealth;
+                maxHealth = gameObject.GetComponent<EnemyController>().template.maxHealth;
                 break;
             case "Object":
-                maxHealth = gameObject.GetComponent<ObjectTemplate>().maxHealth;
+                maxHealth = gameObject.GetComponent<Object>().objectTemplate.maxHealth;
                 break;
         }
         
