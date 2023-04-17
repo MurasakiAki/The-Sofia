@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Recurve Bow
   type: Bow
+  id: 3
   rarity: Common
   mass: 1
+  weaponRange: 0
   damageRangeMin: 12
   damageRangeMax: 15
-  hitRate: 0
+  hitRate: 1
   critChance: 10
   critMultiplier: 150
   icon: {fileID: 0}

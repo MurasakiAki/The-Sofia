@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jump_force;
     public int max_jumps;
+    public int weapon;
+    public int armor;
     public int damage_range_min;
     public int damage_range_max;
     public float attackRange;
@@ -91,6 +93,27 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("Failed to read 'max_jumps' property from file");
         }
 
+        string weaponString = PropertyController.GetValueOfKey(path, "weapon");
+        if (weaponString != null)
+        {
+            weapon = int.Parse(weaponString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'weapon' property from file");
+        }
+
+        string armorString = PropertyController.GetValueOfKey(path, "armor");
+        if (armorString != null)
+        {
+            armor = int.Parse(armorString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'damage_range_min' property from file");
+        }
+
+        //
         string damageRangeMinString = PropertyController.GetValueOfKey(path, "damage_range_min");
         if (damageRangeMinString != null)
         {

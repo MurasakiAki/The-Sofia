@@ -5,15 +5,33 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour
 {
     private GameObject inventoryCanvas;
-    private List<GameObject> inventory = new List<GameObject>();
-    private int invSize = 9;
+    private GameObject slotParent;
+    public List<GameObject> inventory = new List<GameObject>();
+    public int invSize = 9;
 
-    private List<GameObject> weaponSlot = new List<GameObject>();
-    private List<GameObject> armorSlot = new List<GameObject>();
+    public bool hasEquippedWeapon;
+    public bool hasEquippedArmor;
     
     void Start()
     {
         inventoryCanvas = GameObject.Find("Inventory");
+        slotParent = GameObject.Find("SlotParent");
+
+        if(gameObject.GetComponent<PlayerController>().weapon == 0)
+        {
+            hasEquippedWeapon = false;
+        }else
+        {
+            hasEquippedWeapon = true;
+        }
+
+        if (gameObject.GetComponent<PlayerController>().armor == 0)
+        {
+            hasEquippedArmor = false;
+        }else
+        {
+            hasEquippedArmor = true;
+        }
     }
 
     void Update()
@@ -32,9 +50,22 @@ public class InventoryController : MonoBehaviour
     {
         if(inventory.Count != invSize)
         {
-            inventory.Add(item);
-            Debug.Log(item.name + " has been added to the inventory");
-            Destroy(item.gameObject);
+            for(int i = 0; i < invSize; i++)
+            {
+                if(slotParent.transform.GetChild(i).GetComponent<Slot>().isFull == false)
+                {
+                    inventory.Add(item);
+                    Debug.Log(item.name + " has been added to the inventory");
+
+                    slotParent.transform.GetChild(i).GetComponent<Slot>().item = inventory[i];
+                    Debug.Log(slotParent.transform.GetChild(i).name);
+                    Debug.Log(GameLogic.ItemType(item));
+                    slotParent.transform.GetChild(i).GetComponent<Slot>().isFull = true;
+                    break;
+                }
+                
+            }
+            //Destroy(item.gameObject);
 
         }else
         {
@@ -42,11 +73,6 @@ public class InventoryController : MonoBehaviour
             Debug.Log("Inventory is full");
         }
    
-    }
-
-    public void Equip()
-    {
-
     }
 
 }

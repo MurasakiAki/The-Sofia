@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Broken Spear
   type: Spear
+  id: 2
   rarity: Common
   mass: 2
+  weaponRange: 100
   damageRangeMin: 10
   damageRangeMax: 15
   hitRate: 1

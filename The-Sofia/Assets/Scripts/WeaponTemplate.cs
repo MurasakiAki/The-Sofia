@@ -9,6 +9,7 @@ public class WeaponTemplate : ScriptableObject
     //Name
     public string weaponName; //weapon name
     public string type; //type of a weapon
+    public int id; //weapon id
     public string rarity; //rarity of the weapon
 
     //Physics
@@ -18,6 +19,7 @@ public class WeaponTemplate : ScriptableObject
     //bow -> middle
 
     //Damage
+    public int weaponRange; //range of a weapon
     public int damageRangeMin; //a minimum damage a weapon can make
     public int damageRangeMax; //a maximum damage a weapon can make
     public float hitRate; //hit rate of a weapon(how fast it is) 

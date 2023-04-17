@@ -15,13 +15,25 @@ public class GameLogic : MonoBehaviour
         { "speed" , 8 },
         { "jump_force", 6 },
         { "max_jumps", 1 },
+        { "weapon", 0 },
+        { "armor", 0 },
         { "damage_range_min", 1 },
         { "damage_range_max", 5 },
-        { "attack_range", 50 }, //dont forget to / 100
+        { "attack_range", 30 }, //dont forget to / 100
         { "crit_chance", 20 },
         { "crit_multiplier", 150 }, //dont forget to / 100
         { "coins", 0 },
         { "scene", 1 },
+
+        { "slot0", 0 },
+        { "slot1", 0 },
+        { "slot2", 0 },
+        { "slot3", 0 },
+        { "slot4", 0 },
+        { "slot5", 0 },
+        { "slot6", 0 },
+        { "slot7", 0 },
+        { "slot8", 0 }
     };
 
     //Starts a new game
@@ -82,18 +94,31 @@ public class GameLogic : MonoBehaviour
             SceneManager.LoadScene("Level1");
         }else
         {
-            int levelNumber = GetLevelNumber(levelName);
+            int levelNumber = GetNameNumber(levelName);
             levelNumber++; // increase the number
             string newLevelName = levelName.Replace("Level" + (levelNumber - 1), "Level" + levelNumber);
             SceneManager.LoadScene(newLevelName);
         }   
     }
 
-    public static int GetLevelNumber(string levelName)
+    public static int GetNameNumber(string levelName)
     {
         int levelNumber = int.Parse(levelName.Substring(5)); // extract the number from the string
 
         return levelNumber;
-    }  
+    } 
+
+    public static string ItemType(GameObject item)
+    {
+        if(item.GetComponent<Weapon>() != null)
+        {
+            return "Weapon";
+        }else 
+        {
+            return "";
+        }
+        //if(item.GetComponent<Armor>() != null)
+        
+    } 
     
 }

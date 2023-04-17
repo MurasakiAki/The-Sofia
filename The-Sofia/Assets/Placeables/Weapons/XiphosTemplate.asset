@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Xiphos
   type: Sword
+  id: 1
   rarity: Common
   mass: 1
+  weaponRange: 50
   damageRangeMin: 5
   damageRangeMax: 10
   hitRate: 0.5
   critChance: 0
   critMultiplier: 0
-  icon: {fileID: 21300000, guid: d6a44ab95b0def041a7929981a2c23a1, type: 3}
+  icon: {fileID: 21300000, guid: cbb146198b8eddf87b155ce9ac070fc3, type: 3}
