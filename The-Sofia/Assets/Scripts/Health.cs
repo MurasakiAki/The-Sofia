@@ -37,7 +37,6 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        Debug.Log(currentHealth);
         if(currentHealth <= 0)
         {
             Die();
@@ -47,7 +46,10 @@ public class Health : MonoBehaviour
         {    
             this.gameObject.GetComponent<PlayerController>().current_health = currentHealth;
             Debug.Log("Player current health: " + currentHealth);
-        }        
+        }else 
+        {
+            Debug.Log(gameObject.name + "" + currentHealth);
+        }
 
     }
     

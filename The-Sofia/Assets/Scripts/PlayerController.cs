@@ -208,15 +208,20 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Object"))
         {
             is_grounded = true;
+        }
+        else if(collision.gameObject.CompareTag("Item"))
+        {
+            gameObject.GetComponent<InventoryController>().Take(collision.gameObject);    
+            
         }
     }
 
     void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Object"))
         {
             is_grounded = false;
         }

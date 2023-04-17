@@ -20,35 +20,45 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public void Attack()
+public void Attack()
+{
+    //Insert Attack animation
+
+    //Detecting enemies
+    Collider2D[] hitEntities = Physics2D.OverlapCircleAll(attackPoint.position, player.GetComponent<PlayerController>().attackRange / 100, hitableLayer);
+
+    Debug.Log(hitEntities.Length);
+    foreach (Collider2D entity in hitEntities)
     {
-        //Insert Attack animation
-
-        //Detecting enemies
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, player.GetComponent<PlayerController>().attackRange, hitableLayer);
-
-        foreach (Collider2D enemy in hitEnemies)
+        Health health = entity.GetComponent<Health>();
+        if (health != null)
         {
-            Health health = enemy.GetComponent<Health>();
-            if (health != null)
+            System.Random random = new System.Random();
+            int damage = random.Next(player.GetComponent<PlayerController>().damage_range_min, player.GetComponent<PlayerController>().damage_range_max + 1);
+            //calculating crit chance and applying multiplier
+            if(random.Next(0, 101) <= player.GetComponent<PlayerController>().crit_chance)
             {
-                System.Random random = new System.Random();
-                int damage = random.Next(player.GetComponent<PlayerController>().damage_range_min, player.GetComponent<PlayerController>().damage_range_max + 1);
-                //calculating crit chance and applying multiplier
-                if(random.Next(0, 101) <= player.GetComponent<PlayerController>().crit_chance)
-                {
-                    damage = Convert.ToInt32(damage * player.GetComponent<PlayerController>().crit_multiplier);
-                }
-                health.TakeDamage(damage);
+                damage = Convert.ToInt32(damage * player.GetComponent<PlayerController>().crit_multiplier);
             }
+            health.TakeDamage(damage);
         }
-
     }
+    
+}
 
     private void OnDrawGizmos()
+    {   
+        DrawGizmos();
+    }   
+
+    private void OnDrawGizmosSelected()
     {
-        // Draw a sphere around the attack point in the editor for debugging purposes
+        DrawGizmos();
+    }
+
+    private void DrawGizmos()
+    {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, 0.5f); //player.GetComponent<PlayerController>().attackRange
+        Gizmos.DrawWireSphere(attackPoint.position, player.GetComponent<PlayerController>().attackRange / 100);
     }
 }

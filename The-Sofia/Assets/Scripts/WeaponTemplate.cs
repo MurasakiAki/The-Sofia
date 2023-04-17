@@ -8,7 +8,7 @@ public class WeaponTemplate : ScriptableObject
 {
     //Name
     public string weaponName; //weapon name
-    public int id; //id of a weapon
+    public string type; //type of a weapon
     public string rarity; //rarity of the weapon
 
     //Physics

@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d4241c4b173dd523978a9d8ffb082f4, type: 3}
+  m_Script: {fileID: 11500000, guid: ca3e6fdee0418071ba30f127f0a62742, type: 3}
   m_Name: XiphosTemplate
   m_EditorClassIdentifier: 
   weaponName: Xiphos
-  id: 0
+  type: Sword
   rarity: Common
   mass: 1
-  damageRangeMin: 2
-  damageRangeMax: 8
+  damageRangeMin: 5
+  damageRangeMax: 10
   hitRate: 0.5
   critChance: 0
   critMultiplier: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d6a44ab95b0def041a7929981a2c23a1, type: 3}

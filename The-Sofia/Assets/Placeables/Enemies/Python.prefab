@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6834938072835042969}
   - component: {fileID: 6834938072835042970}
   - component: {fileID: 6834938072835042971}
-  - component: {fileID: 744039944794470017}
+  - component: {fileID: 8417092062989656668}
   m_Layer: 6
   m_Name: Python
   m_TagString: Untagged
@@ -149,7 +149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template: {fileID: 11400000, guid: d32a32d168e1927f7a13a698a290eaf5, type: 2}
   player: {fileID: 0}
---- !u!114 &744039944794470017
+  maxHealth: 0
+  currentHealth: 0
+--- !u!114 &8417092062989656668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
