@@ -8,12 +8,14 @@ public class Weapon : MonoBehaviour
     public Sprite itemSprite;
     private SpriteRenderer spriteRenderer;
 
-    void Awake()
+    void Start()
     {
         itemSprite = itemTemplate.icon;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = itemSprite;
+
+        
     }
 
 }

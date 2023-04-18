@@ -5,44 +5,58 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
+    public Image icon; // Reference to the icon game object for this slot
+    public GameObject slotParent;
+    public bool isFull = false; // Whether this slot is full or not
 
-    public bool isFull;
-    public GameObject item;
-
-    private InventoryController controller;
+    private Inventory inventory; // Reference to the inventory script
+    private int slotIndex = -1; // The index of this slot in the inventory list
 
     void Start()
     {
-        controller = GameObject.Find("Player").GetComponent<InventoryController>();
+        inventory = transform.parent.GetComponentInParent<Inventory>(); // Get a reference to the inventory script
+        icon = transform.Find("Icon").GetComponent<Image>();
+        slotParent = GameObject.Find("SlotParent");
     }
 
     void Update()
     {
-        if(isFull)
+        if (slotParent.activeSelf == true)
         {
-            gameObject.transform.Find("Icon").GetComponent<Image>().enabled = true;
-            Debug.Log(GameLogic.ItemType(item) + " item");
-            if(GameLogic.ItemType(item) == "Weapon")
-            {
-               gameObject.transform.Find("Icon").GetComponent<Image>().sprite = item.GetComponent<Weapon>().itemSprite;
-            }
-            
-        }
-        else
-        {
-            gameObject.transform.Find("Icon").GetComponent<Image>().enabled = false;
+            UpdateSlot();
         }
     }
 
-    public void Use()
+    void UpdateSlot()
     {
-        if (item.GetComponent<Weapon>() != null)
+        // Check if there are any items in the inventory
+        if (inventory.items.Count == 0)
         {
-            //Equip weapon
-            
-        }else
+            return;
+        }
+
+        // Find the first empty slot and mark it as full
+        for (int i = 0; i < inventory.inventorySize; i++)
         {
-            //Equip armor or use item
+            if (slotParent.transform.GetChild(i).GetComponent<Slot>().isFull == false)
+            {
+                slotIndex = i;
+                slotParent.transform.GetChild(slotIndex).GetComponent<Slot>().isFull = true;
+                break;
+            }
+        }
+
+        // If there is no empty slot, return
+        if (slotIndex == -1)
+        {
+            return;
+        }
+
+        // Check if the current slot is full and has a valid item index
+        if (isFull == true && slotIndex >= 0 && slotIndex < inventory.items.Count)
+        {
+            icon.enabled = true;
+            icon.sprite = inventory.items[slotIndex].GetComponent<Weapon>().itemSprite;
         }
     }
 }

@@ -452,7 +452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 895892937801171714, guid: 4e178ca9f42e89723877968610c75e91, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e178ca9f42e89723877968610c75e91, type: 3}
@@ -1102,7 +1102,7 @@ GameObject:
   - component: {fileID: 1440333672}
   - component: {fileID: 1440333671}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: InvCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1684,6 +1684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2073884747}
   - component: {fileID: 2073884748}
+  - component: {fileID: 2073884749}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -1720,6 +1721,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073884746}
   m_CullTransparentMesh: 1
+--- !u!114 &2073884749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073884746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b93a04a3dd89e60b25f8518246433a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySize: 9
+  items: []
 --- !u!1001 &3254614705274818074
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private bool can_jump;
     private int jumps = 0;
     public bool can_move;
+    private bool isInventoryOpen = false;
+    public GameObject inventory; // Reference to the inventory panel UI
+    public KeyCode toggleInventoryKey = KeyCode.Tab; // Key to toggle the inventory UI
 
     //PlayerProperties variables
     public int max_health;
@@ -37,6 +40,8 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
         can_move = true;
         can_jump = false;
+        inventory = GameObject.Find("SlotParent");
+        inventory.SetActive(false);
 
         //Setting speed of player
         //PropertyController.WriteProperty(path, "speed", "10");
@@ -219,7 +224,21 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        
+        if (Input.GetKeyDown(toggleInventoryKey))
+        {
+            isInventoryOpen = !isInventoryOpen;
 
+            if (isInventoryOpen)
+            {
+                inventory.SetActive(true); // Show the inventory panel
+            }
+            else
+            {
+                inventory.SetActive(false); // Hide the inventory panel
+            }
+        }
+        
         
     }
 
@@ -235,10 +254,11 @@ public class PlayerController : MonoBehaviour
         {
             is_grounded = true;
         }
-        else if(collision.gameObject.CompareTag("Item"))
+        
+        if(collision.gameObject.CompareTag("Item"))
         {
-            gameObject.GetComponent<InventoryController>().Take(collision.gameObject);    
-            
+            Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+            inventory.AddItem(collision.gameObject);
         }
     }
 
