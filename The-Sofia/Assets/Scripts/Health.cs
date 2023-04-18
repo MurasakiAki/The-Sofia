@@ -7,10 +7,12 @@ public class Health : MonoBehaviour
     [SerializeField] private string type;
     public int maxHealth;
     public int currentHealth;
+    public HudScript HudScript; 
 
     // Initialize maxHealth and currentHealth, if player has a save with less current health it will be loaded
     void Start()
     {
+        HudScript.SetHealth(currentHealth);
         switch (type)
         {
             case "Player":
@@ -50,6 +52,8 @@ public class Health : MonoBehaviour
         {
             Debug.Log(gameObject.name + "" + currentHealth);
         }
+
+        HudScript.SetHealth(currentHealth);
 
     }
     
