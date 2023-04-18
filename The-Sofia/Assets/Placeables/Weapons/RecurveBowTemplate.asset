@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca3e6fdee0418071ba30f127f0a62742, type: 3}
-  m_Name: XiphosTemplate
+  m_Name: RecurveBowTemplate
   m_EditorClassIdentifier: 
-  weaponName: Xiphos
-  type: Sword
-  id: 1
+  weaponName: Recurve Bow
+  type: Bow
+  id: 3
   rarity: Common
   mass: 1
-  weaponRange: 50
-  damageRangeMin: 5
-  damageRangeMax: 10
-  hitRate: 0.5
-  critChance: 0
-  critMultiplier: 0
-  icon: {fileID: 21300000, guid: cbb146198b8eddf87b155ce9ac070fc3, type: 3}
+  weaponRange: 0
+  damageRangeMin: 12
+  damageRangeMax: 15
+  hitRate: 1
+  critChance: 10
+  critMultiplier: 150
+  icon: {fileID: 0}

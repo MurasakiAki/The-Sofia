@@ -6,7 +6,7 @@ using System;
 public class EnemyController : MonoBehaviour
 {
 
-    [SerializeField] private EnemyTemplate template;
+    public EnemyTemplate template;
     private SpriteRenderer spriteRenderer;
     public GameObject player;
     private Rigidbody2D rb;
@@ -16,11 +16,16 @@ public class EnemyController : MonoBehaviour
     private float timeSinceLastShot = 0f;
     private float timeToNextAttack;
 
+    public int maxHealth;
+    public int currentHealth;
+
     // Start is called before the first frame update
-    void Awake()
-    {
+    void Start()
+    {   
+        template = Instantiate(template) as EnemyTemplate;
+
         //set enemy name
-        this.gameObject.name = template.enemyName;
+        this.gameObject.name = template.enemyName;        
 
         //set enemy sprite
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -37,6 +42,9 @@ public class EnemyController : MonoBehaviour
         {
             rb.gravityScale = 0f;
         }
+
+        maxHealth = template.maxHealth;
+        currentHealth = maxHealth;
         
 
         isJumping = false;
@@ -107,7 +115,7 @@ public class EnemyController : MonoBehaviour
             {
                 System.Random random = new System.Random();
                 int damage = random.Next(template.damageRangeMin, template.damageRangeMax + 1);
-                PlayerController.TakeDamage(damage);
+                player.GetComponent<Health>().TakeDamage(damage);
                 timeToNextAttack = template.hitRate;
 
                 if(timeToNextAttack <= 0)
@@ -167,6 +175,7 @@ public class EnemyController : MonoBehaviour
         isJumping = false;
     }
 
+  
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Player"))

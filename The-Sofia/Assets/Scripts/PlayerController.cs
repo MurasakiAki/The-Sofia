@@ -6,15 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     
     [SerializeField] private LayerMask groundLayer;
-    
+        
     private Rigidbody2D playerRigidbody;
-
 
     private string path = "Assets/Scripts/PlayerProperties.ini"; // Path to player properties file
     private bool is_grounded;
     private bool can_jump;
     private int jumps = 0;
     public bool can_move;
+    private bool isInventoryOpen = false;
+    public GameObject inventory; // Reference to the inventory panel UI
+    public KeyCode toggleInventoryKey = KeyCode.Tab; // Key to toggle the inventory UI
 
     //PlayerProperties variables
     public int max_health;
@@ -22,9 +24,12 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jump_force;
     public int max_jumps;
+    public int weapon;
+    public int armor;
     public int damage_range_min;
     public int damage_range_max;
-    public float crit_chance;
+    public float attackRange;
+    public int crit_chance;
     public float crit_multiplier;
     public int coins;
 
@@ -35,25 +40,148 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
         can_move = true;
         can_jump = false;
+        inventory = GameObject.Find("SlotParent");
+        inventory.SetActive(false);
 
         //Setting speed of player
         //PropertyController.WriteProperty(path, "speed", "10");
 
         //initializing player properites every time the player is awaken
-        max_health = int.Parse(PropertyController.GetValueOfKey(path, "max_health"));
-        current_health = max_health;
-        speed =  float.Parse(PropertyController.GetValueOfKey(path, "speed"));
-        jump_force = float.Parse(PropertyController.GetValueOfKey(path, "jump_force"));
-        max_jumps = int.Parse(PropertyController.GetValueOfKey(path, "max_jumps"));
-        damage_range_min = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_min"));
-        damage_range_max = int.Parse(PropertyController.GetValueOfKey(path, "damage_range_max"));
-        crit_chance = float.Parse(PropertyController.GetValueOfKey(path, "crit_chance"));
-        crit_multiplier = float.Parse(PropertyController.GetValueOfKey(path, "crit_multiplier"));
-        coins = int.Parse(PropertyController.GetValueOfKey(path, "coins"));
+        string maxHealthString = PropertyController.GetValueOfKey(path, "max_health");
+        if (maxHealthString != null)
+        {
+            max_health = int.Parse(maxHealthString);
+            Debug.Log("Max HP: " + max_health);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'max_health' property from file");
+        }
+
+        string currentHealthString = PropertyController.GetValueOfKey(path, "current_health");
+        if (currentHealthString != null)
+        {
+            current_health = int.Parse(currentHealthString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'current_health' property from file");
+        }
+
+        string speedString = PropertyController.GetValueOfKey(path, "speed");
+        if (speedString != null)
+        {
+            speed = float.Parse(speedString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'speed' property from file");
+        }
+
+        string jumpForceString = PropertyController.GetValueOfKey(path, "jump_force");
+        if (jumpForceString != null)
+        {
+            jump_force = float.Parse(jumpForceString);
+        }
+        else
+        {   
+            Debug.LogError("Failed to read 'jump_force' property from file");
+        }
+
+        string maxJumpsString = PropertyController.GetValueOfKey(path, "max_jumps");
+        if (maxJumpsString != null)
+        {
+            max_jumps = int.Parse(maxJumpsString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'max_jumps' property from file");
+        }
+
+        string weaponString = PropertyController.GetValueOfKey(path, "weapon");
+        if (weaponString != null)
+        {
+            weapon = int.Parse(weaponString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'weapon' property from file");
+        }
+
+        string armorString = PropertyController.GetValueOfKey(path, "armor");
+        if (armorString != null)
+        {
+            armor = int.Parse(armorString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'damage_range_min' property from file");
+        }
+
+        //
+        string damageRangeMinString = PropertyController.GetValueOfKey(path, "damage_range_min");
+        if (damageRangeMinString != null)
+        {
+            damage_range_min = int.Parse(damageRangeMinString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'damage_range_min' property from file");
+        }
+
+        string damageRangeMaxString = PropertyController.GetValueOfKey(path, "damage_range_max");
+        if (damageRangeMaxString != null)
+        {
+            damage_range_max = int.Parse(damageRangeMaxString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'damage_range_max' property from file");
+        }
+
+        string attackRangeString = PropertyController.GetValueOfKey(path, "attack_range");
+        if (attackRangeString != null)
+        {
+            attackRange = float.Parse(attackRangeString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'attackRange' property from file");
+        }
+
+        string critChanceString = PropertyController.GetValueOfKey(path, "crit_chance");
+        if (critChanceString != null)
+        {
+            crit_chance = int.Parse(critChanceString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'crit_chance' property from file");
+        }
+
+        string critMultiplierString = PropertyController.GetValueOfKey(path, "crit_multiplier");
+        if (critMultiplierString != null)
+        {
+            crit_multiplier = float.Parse(critMultiplierString) / 100;
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'crit_multiplier' property from file");
+        }
+
+        string coinsString = PropertyController.GetValueOfKey(path, "coins");
+        if (coinsString != null)
+        {
+            coins = int.Parse(coinsString);
+        }
+        else
+        {
+            Debug.LogError("Failed to read 'coins' property from file");
+        }
         
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         // Get horizontal input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -96,6 +224,22 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        
+        if (Input.GetKeyDown(toggleInventoryKey))
+        {
+            isInventoryOpen = !isInventoryOpen;
+
+            if (isInventoryOpen)
+            {
+                inventory.SetActive(true); // Show the inventory panel
+            }
+            else
+            {
+                inventory.SetActive(false); // Hide the inventory panel
+            }
+        }
+        
+        
     }
 
     private void Jump()
@@ -106,15 +250,21 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Object"))
         {
             is_grounded = true;
+        }
+        
+        if(collision.gameObject.CompareTag("Item"))
+        {
+            Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+            inventory.AddItem(collision.gameObject);
         }
     }
 
     void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Object"))
         {
             is_grounded = false;
         }
@@ -133,17 +283,4 @@ public class PlayerController : MonoBehaviour
         can_move = set;
     }
 
-    public static void TakeDamage(int damage)
-    {
-        GameObject player = GameObject.Find("Player");
-        
-        player.GetComponent<PlayerController>().current_health -= damage;
-        Debug.Log("Current health: " + player.GetComponent<PlayerController>().current_health);
-    }
-
-    public void Die()
-    {
-        SetMovability(false);
-        Debug.Log("Died");
-    }
 }

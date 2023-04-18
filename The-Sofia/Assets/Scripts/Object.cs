@@ -8,6 +8,9 @@ public class Object : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D coll;
 
+    public int maxHealth;
+
+
     void Awake()
     {
         //set object name

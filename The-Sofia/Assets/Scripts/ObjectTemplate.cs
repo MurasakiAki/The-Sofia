@@ -13,7 +13,7 @@ public class ObjectTemplate : ScriptableObject
     public int maxHealth; //max health of object
 
     //Physics
-    public int mass; //mass of enemy, can influence enemy knockback
+    public int mass; //mass of object
     public bool isStatic; //won't be affected by physics
     public bool isDestroyable; //can be destroyed
     public bool isLootable; //will drop loot
