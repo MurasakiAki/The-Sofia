@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 4374258279505351213}
   - component: {fileID: 3309986327763121005}
   - component: {fileID: 832378588832372117}
-  - component: {fileID: 8475065450376283712}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -155,11 +154,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   can_move: 0
+  inventory: {fileID: 0}
+  toggleInventoryKey: 9
   max_health: 0
   current_health: 0
   speed: 0
   jump_force: 0
   max_jumps: 2
+  weapon: 0
+  armor: 0
   damage_range_min: 0
   damage_range_max: 0
   attackRange: 0
@@ -181,6 +184,7 @@ MonoBehaviour:
   type: Player
   maxHealth: 0
   currentHealth: 0
+  HudScript: {fileID: 0}
 --- !u!114 &832378588832372117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,18 +202,6 @@ MonoBehaviour:
     m_Bits: 64
   player: {fileID: 4374258279505351638}
   attackPoint: {fileID: 5920517220249229563}
---- !u!114 &8475065450376283712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4374258279505351638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 754751782377e8fde9d1c9f95c728f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4374258279579928143
 GameObject:
   m_ObjectHideFlags: 0
