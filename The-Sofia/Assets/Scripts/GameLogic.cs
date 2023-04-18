@@ -65,8 +65,31 @@ public class GameLogic : MonoBehaviour
     //In saving, have to multiply attack_range by 100
     public static void SaveGame()
     {
-        GameObject player = GameObject.Find("Player");
+        PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
 
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini","max_health",player.max_health.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "current_health", player.current_health.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "speed", player.speed.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "jump_force", player.jump_force.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "max_jumps", player.max_jumps.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "weapon", player.weapon.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "armor", player.armor.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "damage_range_min", player.damage_range_min.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "damage_range_max", player.damage_range_max.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "attack_range", player.attackRange.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "crit_chance", player.crit_chance.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "crit_multiplier", player.crit_multiplier.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "coins", player.coins.ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "scene", GetNameNumber(SceneManager.GetActiveScene().name).ToString());//TODO
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "slot0", player.inventory_dict["slot0"].ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "slot1", player.inventory_dict["slot1"].ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "slot2", player.inventory_dict["slot2"].ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "slot3", player.inventory_dict["slot3"].ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "slot4", player.inventory_dict["slot4"].ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "slot5", player.inventory_dict["slot5"].ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "slot6", player.inventory_dict["slot6"].ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "slot7", player.inventory_dict["slot7"].ToString());
+        PropertyController.WriteProperty("Assets/Scripts/PlayerProperties.ini", "slot8", player.inventory_dict["slot8"].ToString());
 
     }
 
