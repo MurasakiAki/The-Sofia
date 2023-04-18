@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     // Initialize maxHealth and currentHealth, if player has a save with less current health it will be loaded
     void Start()
     {
-        HudScript.SetHealth(currentHealth);
+        
         switch (type)
         {
             case "Player":
@@ -32,7 +32,8 @@ public class Health : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        
+
+        HudScript.SetHealth(currentHealth);
     }
 
     //TakeDamage
