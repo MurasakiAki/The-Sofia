@@ -144,6 +144,5 @@ public class GameLogic : MonoBehaviour
         }
         //if(item.GetComponent<Armor>() != null)
         
-    } 
-    
+    }
 }
