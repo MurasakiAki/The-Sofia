@@ -65,6 +65,8 @@ public class GameLogic : MonoBehaviour
     //In saving, have to multiply attack_range by 100
     public static void SaveGame()
     {
+        GameObject player = GameObject.Find("Player");
+
 
     }
 
