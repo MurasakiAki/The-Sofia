@@ -33,6 +33,19 @@ public class PlayerController : MonoBehaviour
     public float crit_multiplier;
     public int coins;
 
+    public Dictionary<string, int> inventory_dict = new Dictionary<string, int>()
+    {
+        { "slot0", 0 },
+        { "slot1", 0 },
+        { "slot2", 0 },
+        { "slot3", 0 },
+        { "slot4", 0 },
+        { "slot5", 0 },
+        { "slot6", 0 },
+        { "slot7", 0 },
+        { "slot8", 0 }
+    };
+
 
     private void Awake()
     {
