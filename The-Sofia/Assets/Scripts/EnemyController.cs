@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     private bool canAttack = false;
     private float timeSinceLastShot = 0f;
     private float timeToNextAttack;
+    public HudScript HudScript;
 
     public int maxHealth;
     public int currentHealth;
@@ -116,6 +117,7 @@ public class EnemyController : MonoBehaviour
                 System.Random random = new System.Random();
                 int damage = random.Next(template.damageRangeMin, template.damageRangeMax + 1);
                 player.GetComponent<Health>().TakeDamage(damage);
+                
                 timeToNextAttack = template.hitRate;
 
                 if(timeToNextAttack <= 0)
@@ -142,6 +144,8 @@ public class EnemyController : MonoBehaviour
                 int damage = random.Next(template.damageRangeMin, template.damageRangeMax + 1);
                 float offsetX = (float)(random.NextDouble() * 0.8f - 0.4f);
                 float offsetY = (float)(random.NextDouble() * 0.8f - 0.4f);
+
+                
 
                 Vector2 targetLocation = (player.transform.position - transform.position).normalized;
                 targetLocation.x += offsetX;
