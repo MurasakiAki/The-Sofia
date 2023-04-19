@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool isInventoryOpen = false;
     public GameObject inventory; // Reference to the inventory panel UI
     public KeyCode toggleInventoryKey = KeyCode.Tab; // Key to toggle the inventory UI
+    public HudScript HudScript;
 
     //PlayerProperties variables
     public int max_health;
@@ -328,6 +329,7 @@ public class PlayerController : MonoBehaviour
         {
             coins = other.gameObject.GetComponent<Coin>().value;
             Destroy(other.gameObject);
+            HudScript.SetCoin(coins);
         }
     }
 
