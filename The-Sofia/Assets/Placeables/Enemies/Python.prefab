@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template: {fileID: 11400000, guid: d32a32d168e1927f7a13a698a290eaf5, type: 2}
   player: {fileID: 0}
+  HudScript: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
 --- !u!114 &8417092062989656668
@@ -166,3 +167,4 @@ MonoBehaviour:
   type: Enemy
   maxHealth: 0
   currentHealth: 0
+  HudScript: {fileID: 0}

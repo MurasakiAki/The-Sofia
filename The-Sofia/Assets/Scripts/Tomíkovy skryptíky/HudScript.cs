@@ -7,11 +7,16 @@ using UnityEngine.UI;
 public class HudScript : MonoBehaviour
 {
 
-    public TextMeshProUGUI healthText; 
-
+    public TextMeshProUGUI coinText;
+    public TextMeshProUGUI healthText;
     public void SetHealth(int health)
     {
-        healthText.text = health.ToString()+ " /100";
+        healthText.text = health.ToString() + "/100";
+    }
+
+    public void SetCoin(int coin)
+    {
+        coinText.text = coin.ToString(); 
     }
 
 }

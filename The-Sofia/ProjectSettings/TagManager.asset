@@ -12,6 +12,7 @@ TagManager:
   - Walls
   - Object
   - Item
+  - Coin
   layers:
   - Default
   - TransparentFX
