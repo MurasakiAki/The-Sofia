@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SlotParent : MonoBehaviour
 {
-      private Inventory inventory; // Reference to the inventory script
+    private Inventory inventory; // Reference to the inventory script
 
     void Start()
     {
@@ -51,53 +51,69 @@ public class SlotParent : MonoBehaviour
     }
 
     // Method called when the destroy button is clicked
-void OnDestroyButtonClick(int slotIndex)
-{
-    if (slotIndex >= inventory.items.Count)
+    void OnDestroyButtonClick(int slotIndex)
     {
-        // Return if the slot is out of range
-        return;
-    }
-
-    // Remove the item from the inventory
-    inventory.items.RemoveAt(slotIndex);
-
-    // Update the slot images and destroy button interactability for all subsequent slots
-    for (int i = slotIndex; i < transform.childCount - 1; i++)
-    {
-        Transform currentSlot = transform.GetChild(i);
-        Transform nextSlot = transform.GetChild(i + 1);
-
-        // Set the current slot's image to the next slot's image (if it exists)
-        if (i < inventory.items.Count)
+        if (slotIndex >= inventory.items.Count)
         {
-            currentSlot.Find("Icon").GetComponent<Image>().sprite = inventory.items[i].GetComponent<Weapon>().itemSprite;
-        }
-        else
-        {
-            currentSlot.Find("Icon").GetComponent<Image>().sprite = null;
-            currentSlot.Find("Destroy").GetComponent<Button>().interactable = false;
+            // Return if the slot is out of range
+            return;
         }
 
-        // Update the destroy button interactability
-        nextSlot.Find("Destroy").GetComponent<Button>().interactable = (i + 1 < inventory.items.Count);
-    }
+        // Remove the item from the inventory
+        inventory.items.RemoveAt(slotIndex);
 
-    // Update the last slot's image and destroy button interactability if the inventory is full
-    if (inventory.items.Count == inventory.inventorySize - 1)
-    {
-        Transform lastSlot = transform.GetChild(inventory.items.Count);
-        lastSlot.Find("Icon").GetComponent<Image>().sprite = null;
-        lastSlot.Find("Destroy").GetComponent<Button>().interactable = false;
+        // Update the slot images and destroy button interactability for all subsequent slots
+        for (int i = slotIndex; i < transform.childCount - 1; i++)
+        {
+            Transform currentSlot = transform.GetChild(i);
+            Transform nextSlot = transform.GetChild(i + 1);
+
+            // Set the current slot's image to the next slot's image (if it exists)
+            if (i < inventory.items.Count)
+            {
+                currentSlot.Find("Icon").GetComponent<Image>().sprite = inventory.items[i].GetComponent<Weapon>().itemSprite;
+            }
+            else
+            {
+                currentSlot.Find("Icon").GetComponent<Image>().sprite = null;
+                currentSlot.Find("Destroy").GetComponent<Button>().interactable = false;
+            }
+
+            // Update the destroy button interactability
+            nextSlot.Find("Destroy").GetComponent<Button>().interactable = (i + 1 < inventory.items.Count);
+        }
+
+        // Update the last slot's image and destroy button interactability if the inventory is full
+        if (inventory.items.Count == inventory.inventorySize - 1)
+        {
+            Transform lastSlot = transform.GetChild(inventory.items.Count);
+            lastSlot.Find("Icon").GetComponent<Image>().sprite = null;
+            lastSlot.Find("Destroy").GetComponent<Button>().interactable = false;
+        }
     }
-}
 
 
     void OnIconButtonClick(int slotIndex)
     {
-        // If the slot is empty, return
+        GameObject player = GameObject.Find("Player");
 
-        Debug.Log("Item clicked");
+        int previousWeaponID = player.GetComponent<PlayerController>().weapon;
+        
+        GameObject previousWeapon = GameObject.Find("WeaponList").GetComponent<WeaponList>().weaponList[previousWeaponID];
+
+        player.GetComponent<PlayerController>().weapon = inventory.items[slotIndex].GetComponent<Weapon>().itemTemplate.id;
+
+        player.GetComponent<PlayerController>().damage_range_min = inventory.items[slotIndex].GetComponent<Weapon>().itemTemplate.damageRangeMin;
+        player.GetComponent<PlayerController>().damage_range_max = inventory.items[slotIndex].GetComponent<Weapon>().itemTemplate.damageRangeMax;
+
+        player.GetComponent<PlayerController>().crit_chance -= previousWeapon.GetComponent<Weapon>().itemTemplate.critChance;
+        player.GetComponent<PlayerController>().crit_chance += inventory.items[slotIndex].GetComponent<Weapon>().itemTemplate.critChance;
+
+        player.GetComponent<PlayerController>().crit_multiplier -= previousWeapon.GetComponent<Weapon>().itemTemplate.critMultiplier;
+        player.GetComponent<PlayerController>().crit_multiplier += inventory.items[slotIndex].GetComponent<Weapon>().itemTemplate.critMultiplier;
+
+
+        Debug.Log("Equipped weapon " + player.GetComponent<PlayerController>().weapon);
         
     }
 }

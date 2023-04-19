@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameLogic : MonoBehaviour
 {
 
+    
+
     public static Dictionary<string, int> base_data = new Dictionary<string, int>()
     {
         { "max_health", 100 },
@@ -35,7 +37,7 @@ public class GameLogic : MonoBehaviour
         { "slot7", 0 },
         { "slot8", 0 }
     };
-
+    
     //Starts a new game
     public static void StartGame()
     {
