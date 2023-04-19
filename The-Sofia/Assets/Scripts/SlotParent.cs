@@ -31,10 +31,16 @@ public class SlotParent : MonoBehaviour
                 transform.GetChild(i).Find("Icon").GetComponent<Image>().sprite = inventory.items[i].GetComponent<Weapon>().itemSprite;
 
                 int slotIndex = GameLogic.GetNameNumber(transform.GetChild(i).gameObject.name);
+
                 Button destroyButton = transform.GetChild(i).Find("Destroy").GetComponent<Button>();
                 destroyButton.interactable = true;
                 destroyButton.onClick.RemoveAllListeners();
                 destroyButton.onClick.AddListener(() => OnDestroyButtonClick(slotIndex));
+
+                Button iconButton = transform.GetChild(i).GetComponent<Button>();
+                iconButton.onClick.RemoveAllListeners();
+                iconButton.onClick.AddListener(() => OnIconButtonClick(slotIndex));
+
             }
         }else
         {
@@ -87,7 +93,7 @@ void OnDestroyButtonClick(int slotIndex)
 }
 
 
-    void OnIconButtonClick()
+    void OnIconButtonClick(int slotIndex)
     {
         // If the slot is empty, return
 
