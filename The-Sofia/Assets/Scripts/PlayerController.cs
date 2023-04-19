@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private string path = "Assets/Scripts/PlayerProperties.ini"; // Path to player properties file
     private bool is_grounded;
+    private bool is_colliding;
     private bool can_jump;
     private int jumps = 0;
     public bool can_move;
@@ -263,9 +264,18 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Object"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             is_grounded = true;
+        }
+
+        if (collision.gameObject.CompareTag("Object"))
+        {
+            is_colliding = true;
+            if(is_grounded == false)
+            {
+                is_grounded = true;
+            }
         }
         
         if(collision.gameObject.CompareTag("Item"))
@@ -275,9 +285,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            is_grounded = true;
+        }
+
+        if (other.gameObject.CompareTag("Object"))
+        {
+            is_colliding = true;
+        }
+    }
+
     void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Object"))
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            is_grounded = false;
+        }
+
+        if (other.gameObject.CompareTag("Object"))
+        {
+            is_colliding = false;
+        }
+    
+        // Set is_grounded to false only if the player is not colliding with any object other than the ground
+        if (!is_colliding)
         {
             is_grounded = false;
         }

@@ -9,6 +9,6 @@ public class Coin : MonoBehaviour
     void Start()
     {
         System.Random random = new System.Random();
-        value = random.Next(0, 26);  
+        value = random.Next(1, 26);  
     }
 }
