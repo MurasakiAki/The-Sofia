@@ -18,7 +18,14 @@ public class Health : MonoBehaviour
             case "Player":
                 maxHealth = this.gameObject.GetComponent<PlayerController>().max_health;
                 currentHealth = this.gameObject.GetComponent<PlayerController>().current_health;
-                HudScript.SetHealth(currentHealth);
+                if (HudScript != null)
+                {
+                    HudScript.SetHealth(currentHealth);
+                }else
+                {
+                    return;
+                }
+
                 break;
             case "Enemy":
                 maxHealth = gameObject.GetComponent<EnemyController>().template.maxHealth;
@@ -51,7 +58,14 @@ public class Health : MonoBehaviour
         {    
             this.gameObject.GetComponent<PlayerController>().current_health = currentHealth;
             Debug.Log("Player current health: " + currentHealth);
-            HudScript.SetHealth(currentHealth); 
+            if( HudScript != null)
+            {
+                HudScript.SetHealth(currentHealth); 
+            }else
+            {
+                return;
+            }
+            
         }
         else 
         {

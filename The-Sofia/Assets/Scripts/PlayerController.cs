@@ -289,6 +289,11 @@ public class PlayerController : MonoBehaviour
         {
             GameLogic.NextLevel();
         }
+
+        if(other.gameObject.CompareTag("Coin"))
+        {
+            coins = other.gameObject.GetComponent<Coin>().value;
+        }
     }
 
     public void SetMovability(bool set)
