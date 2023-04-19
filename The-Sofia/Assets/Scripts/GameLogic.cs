@@ -143,6 +143,44 @@ public class GameLogic : MonoBehaviour
             return "";
         }
         //if(item.GetComponent<Armor>() != null)
-        
+    }
+
+    public static bool CheckRange(int number, int min, int max)
+    {
+        if(number >= min && number <= max)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
+
+    //spawn object based on their name from list
+    public static void SpawnObject(Transform self, string objectName, GameObject[] list)
+    {
+        // Search for a prefab with a matching name
+        GameObject prefab = null;
+        foreach (GameObject obj in list)
+        {
+            if (obj.name == objectName)
+            {
+                prefab = obj;
+                break;
+            }
+        }
+
+        // If no prefab was found, return without instantiating anything
+        if (prefab == null)
+        {
+            Debug.LogWarning("No prefab found with name " + objectName);
+            return;
+        }
+
+        // Instantiate a new instance of the prefab at the specified position and rotation
+        GameObject newObject = Instantiate(prefab, self.parent.position, self.parent.rotation);
+
+        // Set the parent of the new object to this GameObject
+        newObject.transform.SetParent(self);
     }
 }

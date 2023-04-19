@@ -16,7 +16,7 @@ MonoBehaviour:
   isStatic: 1
   isFollowing: 0
   isFlying: 0
-  isRange: 0
+  isRange: 1
   isJumping: 0
   enemySpeed: 0
   jumpForce: 0

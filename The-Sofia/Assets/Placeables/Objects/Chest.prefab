@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5873441416001893305}
   - component: {fileID: 1663976896958127805}
   - component: {fileID: 3881420355023417286}
-  - component: {fileID: -1197606641896825008}
+  - component: {fileID: 4473562755715887311}
+  - component: {fileID: 7784406874715029963}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Object
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5377358, g: 0.3469022, b: 0.17501779, a: 1}
+  m_Color: {r: 0.5283019, g: 0.3287481, b: 0.12210752, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,7 +135,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-1197606641896825008
+--- !u!114 &4473562755715887311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,4 +148,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTemplate: {fileID: 11400000, guid: b18ab7a8a53604033ad579c1ade590b5, type: 2}
+  weaponPrefabs:
+  - {fileID: 5913453395309142760, guid: 3b37ca6513f30e33f9d6aaf90d47b884, type: 3}
+  - {fileID: 5913453395309142760, guid: 66eacc8c6cbf5cb9aabaea8075c264a8, type: 3}
+  - {fileID: 5913453395309142760, guid: 3a66bdf31070eb860af516e51024eac6, type: 3}
+  itemChance: {x: 1, y: 10}
+  coinChance: {x: 11, y: 100}
+  coinPrefab: {fileID: 7043214011847691756, guid: d9d34fe1d4cc5f2fc905151abac89724, type: 3}
+  weaponNameList:
+  - Xiphos
+  - BrokenSpear
+  - RecurveBow
   maxHealth: 0
+--- !u!114 &7784406874715029963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258359848889882632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31298ed9ae3cb1d5882b650d9114d74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: Object
+  maxHealth: 0
+  currentHealth: 0
+  HudScript: {fileID: 0}

@@ -8,14 +8,22 @@ public class Object : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D coll;
 
+    public GameObject[] weaponPrefabs;
+    public Vector2Int itemChance = new Vector2Int(1, 10);
+    public Vector2Int coinChance = new Vector2Int(11, 100);
+
+    public GameObject coinPrefab;
+
+    public string[] weaponNameList = {"Xiphos", "BrokenSpear", "RecurveBow"};
+
     public int maxHealth;
 
 
-    void Awake()
+    void Start()
     {
         //set object name
         this.gameObject.name = objectTemplate.objectName;
-
+        
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
 
@@ -31,7 +39,35 @@ public class Object : MonoBehaviour
 
         if(objectTemplate.isDestroyable)
         {
-            gameObject.AddComponent<Health>();
+            maxHealth = objectTemplate.maxHealth;
+            gameObject.layer = LayerMask.NameToLayer("Hitable");
         }
     }
+
+    private void OnDestroy()
+    {
+        if(objectTemplate.isLootable)
+        {
+            DropLoot();
+        }    
+    }
+
+    private void DropLoot()
+    {
+        System.Random random = new System.Random();
+        int pickedNumber = random.Next(1, 101);
+
+        if(GameLogic.CheckRange(pickedNumber, itemChance.x, itemChance.y))
+        {
+            int itemID = random.Next(1, 4);
+            GameLogic.SpawnObject(gameObject.transform, weaponNameList[itemID], weaponPrefabs);
+        }else
+        {
+            GameObject coin = Instantiate(coinPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        }
+
+    }
+
+    
+
 }

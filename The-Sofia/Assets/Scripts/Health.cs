@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private string type;
+    public string type;
     public int maxHealth;
     public int currentHealth;
     public HudScript HudScript; 
@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
         if(type != "Player")
         {
             currentHealth = maxHealth;
-            
+            Debug.Log(currentHealth);
         }
 
         
