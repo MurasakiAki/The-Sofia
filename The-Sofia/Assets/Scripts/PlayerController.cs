@@ -294,7 +294,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Coin"))
         {
             coins = other.gameObject.GetComponent<Coin>().value;
-            HudScript.SetCoin(coins);
+            Destroy(other.gameObject);
         }
     }
 

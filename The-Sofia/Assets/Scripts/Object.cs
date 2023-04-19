@@ -28,5 +28,10 @@ public class Object : MonoBehaviour
         {
             rb.gravityScale = 0f;
         }
+
+        if(objectTemplate.isDestroyable)
+        {
+            gameObject.AddComponent<Health>();
+        }
     }
 }
