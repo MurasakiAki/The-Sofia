@@ -293,6 +293,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Coin"))
         {
             coins = other.gameObject.GetComponent<Coin>().value;
+            Destroy(other.gameObject);
         }
     }
 
