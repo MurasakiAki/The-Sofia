@@ -61,7 +61,6 @@ public class GameLogic : MonoBehaviour
         }
     }
 
-    //TODO
     //In saving, have to multiply attack_range by 100
     public static void SaveGame()
     {
@@ -110,7 +109,6 @@ public class GameLogic : MonoBehaviour
 
     //Transfer player to another level
 
-    // TODO ud�lat ukl�d�n� do souboru
     public static void NextLevel()
     {
         string levelName = SceneManager.GetActiveScene().name;
@@ -176,11 +174,7 @@ public class GameLogic : MonoBehaviour
             Debug.LogWarning("No prefab found with name " + objectName);
             return;
         }
-
-        // Instantiate a new instance of the prefab at the specified position and rotation
-        GameObject newObject = Instantiate(prefab, self.parent.position, self.parent.rotation);
-
-        // Set the parent of the new object to this GameObject
-        newObject.transform.SetParent(self);
+        
+        GameObject newObject = Instantiate(prefab, self.position, self.rotation);
     }
 }

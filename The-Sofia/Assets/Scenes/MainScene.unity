@@ -516,11 +516,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4473562755715887311, guid: e3d517ee041c7c5e9b2ea616cc611fab, type: 3}
       propertyPath: coinChance.x
-      value: 3
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 4473562755715887311, guid: e3d517ee041c7c5e9b2ea616cc611fab, type: 3}
       propertyPath: itemChance.y
-      value: 2
+      value: 98
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3d517ee041c7c5e9b2ea616cc611fab, type: 3}
@@ -588,21 +588,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4340507765279168072, guid: 3b37ca6513f30e33f9d6aaf90d47b884, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340507765279168072, guid: 3b37ca6513f30e33f9d6aaf90d47b884, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5913453395309142760, guid: 3b37ca6513f30e33f9d6aaf90d47b884, type: 3}
       propertyPath: m_Name
       value: Xiphos
-      objectReference: {fileID: 0}
-    - target: {fileID: 5913453395309142760, guid: 3b37ca6513f30e33f9d6aaf90d47b884, type: 3}
-      propertyPath: m_TagString
-      value: Item
       objectReference: {fileID: 0}
     - target: {fileID: 7113414337909537046, guid: 3b37ca6513f30e33f9d6aaf90d47b884, type: 3}
       propertyPath: m_RootOrder
@@ -646,10 +634,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7113414337909537046, guid: 3b37ca6513f30e33f9d6aaf90d47b884, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8020970245855041905, guid: 3b37ca6513f30e33f9d6aaf90d47b884, type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
