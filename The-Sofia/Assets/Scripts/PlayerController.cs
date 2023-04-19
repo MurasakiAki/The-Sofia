@@ -295,6 +295,7 @@ public class PlayerController : MonoBehaviour
         {
             coins = other.gameObject.GetComponent<Coin>().value;
             Destroy(other.gameObject);
+            HudScript.SetCoin(coins);
         }
     }
 

@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class HudScript : MonoBehaviour
 {
 
-    public TextMeshProUGUI healthText;
     public TextMeshProUGUI coinText;
+    public TextMeshProUGUI healthText;
     public void SetHealth(int health)
     {
         healthText.text = health.ToString() + "/100";
@@ -16,7 +16,7 @@ public class HudScript : MonoBehaviour
 
     public void SetCoin(int coin)
     {
-        healthText.text = coin.ToString(); 
+        coinText.text = coin.ToString(); 
     }
 
 }
