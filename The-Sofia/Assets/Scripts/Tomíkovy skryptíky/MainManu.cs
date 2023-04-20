@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainManu : MonoBehaviour
 {
 
+
     public void PlayGame()
     {
         GameLogic.StartGame();
@@ -15,5 +16,10 @@ public class MainManu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ContinueB()
+    {
+        GameLogic.ContinueGame();
     }
 }
