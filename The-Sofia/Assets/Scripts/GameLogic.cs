@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameLogic : MonoBehaviour
 {
 
+    
+
     public static Dictionary<string, int> base_data = new Dictionary<string, int>()
     {
         { "max_health", 100 },
@@ -35,7 +37,7 @@ public class GameLogic : MonoBehaviour
         { "slot7", 0 },
         { "slot8", 0 }
     };
-
+    
     //Starts a new game
     public static void StartGame()
     {
@@ -61,7 +63,6 @@ public class GameLogic : MonoBehaviour
         }
     }
 
-    //TODO
     //In saving, have to multiply attack_range by 100
     public static void SaveGame()
     {
@@ -110,7 +111,6 @@ public class GameLogic : MonoBehaviour
 
     //Transfer player to another level
 
-    // TODO ud�lat ukl�d�n� do souboru
     public static void NextLevel()
     {
         string levelName = SceneManager.GetActiveScene().name;
@@ -176,11 +176,7 @@ public class GameLogic : MonoBehaviour
             Debug.LogWarning("No prefab found with name " + objectName);
             return;
         }
-
-        // Instantiate a new instance of the prefab at the specified position and rotation
-        GameObject newObject = Instantiate(prefab, self.parent.position, self.parent.rotation);
-
-        // Set the parent of the new object to this GameObject
-        newObject.transform.SetParent(self);
+        
+        GameObject newObject = Instantiate(prefab, self.position, self.rotation);
     }
 }

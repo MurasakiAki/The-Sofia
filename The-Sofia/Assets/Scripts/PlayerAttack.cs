@@ -27,7 +27,7 @@ public void Attack()
     //Detecting enemies
     Collider2D[] hitEntities = Physics2D.OverlapCircleAll(attackPoint.position, player.GetComponent<PlayerController>().attackRange / 100, hitableLayer);
 
-    Debug.Log(hitEntities.Length);
+    Debug.Log(hitEntities.Length + "Enemies detected");
     foreach (Collider2D entity in hitEntities)
     {
         Health health = entity.GetComponent<Health>();
@@ -37,9 +37,11 @@ public void Attack()
             int damage = random.Next(player.GetComponent<PlayerController>().damage_range_min, player.GetComponent<PlayerController>().damage_range_max + 1);
             //calculating crit chance and applying multiplier
             if(random.Next(0, 101) <= player.GetComponent<PlayerController>().crit_chance)
-            {
-                damage = Convert.ToInt32(damage * player.GetComponent<PlayerController>().crit_multiplier);
+            {   
+                Debug.Log("Critical damage hit! Ddamage is x" + player.GetComponent<PlayerController>().crit_multiplier);
+                damage = Convert.ToInt32(damage * player.GetComponent<PlayerController>().crit_multiplier / 100);
             }
+            Debug.Log("Dealt " + damage + " damage to " + entity.name);
             health.TakeDamage(damage);
         }
     }
@@ -60,5 +62,6 @@ public void Attack()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, player.GetComponent<PlayerController>().attackRange / 100);
+
     }
 }

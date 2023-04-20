@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
         string critMultiplierString = PropertyController.GetValueOfKey(path, "crit_multiplier");
         if (critMultiplierString != null)
         {
-            crit_multiplier = float.Parse(critMultiplierString) / 100;
+            crit_multiplier = float.Parse(critMultiplierString);
         }
         else
         {

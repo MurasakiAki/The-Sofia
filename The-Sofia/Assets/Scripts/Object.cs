@@ -59,8 +59,8 @@ public class Object : MonoBehaviour
 
         if(GameLogic.CheckRange(pickedNumber, itemChance.x, itemChance.y))
         {
-            int itemID = random.Next(1, 4);
-            GameLogic.SpawnObject(gameObject.transform, weaponNameList[itemID], weaponPrefabs);
+            int itemID = random.Next(0, weaponNameList.Length - 1);
+            GameLogic.SpawnObject(transform, weaponNameList[itemID] , weaponPrefabs);
         }else
         {
             GameObject coin = Instantiate(coinPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
