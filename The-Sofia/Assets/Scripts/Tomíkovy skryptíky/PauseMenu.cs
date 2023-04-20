@@ -54,4 +54,10 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    //uklada to hru
+    public void Slave()
+    {
+        GameLogic.SaveGame();
+    }
 }
