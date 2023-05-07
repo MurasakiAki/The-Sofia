@@ -156,6 +156,7 @@ MonoBehaviour:
   can_move: 0
   inventory: {fileID: 0}
   toggleInventoryKey: 9
+  HudScript: {fileID: 0}
   max_health: 0
   current_health: 0
   speed: 0
@@ -262,7 +263,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

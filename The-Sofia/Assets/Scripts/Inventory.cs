@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
         if (items.Count < inventorySize)
         {
             items.Add(itemToAdd);
+            itemToAdd.SetActive(false);
             return true;
         }
         else

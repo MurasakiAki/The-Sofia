@@ -282,6 +282,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.CompareTag("Item"))
         {
             Inventory inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+
             inventory.AddItem(collision.gameObject);
         }
     }
