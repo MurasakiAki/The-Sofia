@@ -204,6 +204,8 @@ public class PlayerController : MonoBehaviour
         // Move the player
         if(can_move)
         {
+            //move sound
+            //move anim
             // Move the player
             Vector2 movement = new Vector2(horizontalInput * speed, playerRigidbody.velocity.y);
             playerRigidbody.velocity = movement;
@@ -259,6 +261,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        //jump sound
         playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, jump_force);
         if(jumps == max_jumps){can_jump = false;}
     }
@@ -267,6 +270,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            //ground impact sound
             is_grounded = true;
         }
 
@@ -323,11 +327,13 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("NextLevel"))
         {
+            //next lvl sound
             GameLogic.NextLevel();
         }
 
         if(other.gameObject.CompareTag("Coin"))
         {
+            //coin pickup sound
             coins = other.gameObject.GetComponent<Coin>().value;
             Destroy(other.gameObject);
             HudScript.SetCoin(coins);

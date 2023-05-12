@@ -56,6 +56,7 @@ public class Health : MonoBehaviour
 
         if(type == "Player")
         {    
+            //player taking dmg sound
             this.gameObject.GetComponent<PlayerController>().current_health = currentHealth;
             Debug.Log("Player current health: " + currentHealth);
             if( HudScript != null)
@@ -69,6 +70,7 @@ public class Health : MonoBehaviour
         }
         else 
         {
+            //other taking dmg sound
             Debug.Log(gameObject.name + "" + currentHealth);
         }
 
@@ -78,6 +80,7 @@ public class Health : MonoBehaviour
     //Heal
     public void Heal(int amount)
     {
+        //heal sound
         currentHealth += amount;
         if(currentHealth > maxHealth)
         {
@@ -92,14 +95,17 @@ public class Health : MonoBehaviour
         {
             case "Player":
                 //Player death effect/death screan
+                //die sound + anim
                 Debug.Log("Player died");
                 break;
             case "Enemy":
                 //Enemy death effect
+                //enemy die sound + anim/effect
                 Destroy(gameObject);
                 break;
             case "Object":
                 //Object death effect
+                //object breaking sound + anim/effect
                 Destroy(gameObject);
                 break;
         }

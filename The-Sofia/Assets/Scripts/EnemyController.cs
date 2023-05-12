@@ -93,6 +93,8 @@ public class EnemyController : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+
+        //move sound + anim
         
     }
 
@@ -112,6 +114,7 @@ public class EnemyController : MonoBehaviour
     {
         if(canAttack)
         {
+            //attack sound + anim (based on enemy name)
             if(timeToNextAttack == template.hitRate || timeToNextAttack <= 0)
             {
                 System.Random random = new System.Random();
@@ -151,7 +154,7 @@ public class EnemyController : MonoBehaviour
                 targetLocation.x += offsetX;
                 targetLocation.y += offsetY;
                 GameObject newProjectile = Instantiate(template.projectile, this.gameObject.transform.position, this.gameObject.transform.rotation);
-
+                //shoot sound / effect(can be based on enemy name)
                 newProjectile.GetComponent<Projectile>().damage = damage;
                 newProjectile.GetComponent<Rigidbody2D>().velocity = targetLocation * newProjectile.GetComponent<Projectile>().projectileSpeed;
                 newProjectile.GetComponent<Projectile>().initialPosition = transform.position;
@@ -164,6 +167,7 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator Jump()
     {
+        //jump sound + effect/anim
         isJumping = true;
 
         Vector2 direction = (player.transform.position - transform.position).normalized;

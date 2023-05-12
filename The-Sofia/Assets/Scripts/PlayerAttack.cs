@@ -22,6 +22,7 @@ public class PlayerAttack : MonoBehaviour
 
 public void Attack()
 {
+    //attack sound + anim
     //Insert Attack animation
 
     //Detecting enemies
