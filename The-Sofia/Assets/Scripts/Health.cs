@@ -96,6 +96,8 @@ public class Health : MonoBehaviour
             case "Player":
                 //Player death effect/death screan
                 //die sound + anim
+                gameObject.GetComponent<PlayerController>().SetMovability(false);
+                gameObject.GetComponent<PlayerAttack>().setCanAttack(false);
                 Debug.Log("Player died");
                 break;
             case "Enemy":

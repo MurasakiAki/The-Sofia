@@ -9,12 +9,13 @@ public class PlayerAttack : MonoBehaviour
 
     public GameObject player;
     public Transform attackPoint;
+    public bool canAttack = true;
 
     // Update is called once per frame
     void Update()
     {
         //Attacking
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E) && canAttack) 
         {
             Attack();
         }
@@ -47,6 +48,12 @@ public void Attack()
         }
     }
     
+}
+
+public void setCanAttack(bool val)
+{
+    this.canAttack = val;
+
 }
 
     private void OnDrawGizmos()
