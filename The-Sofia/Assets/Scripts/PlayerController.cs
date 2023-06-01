@@ -359,6 +359,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetMovability(bool set)
     {
+        playerRigidbody.velocity = Vector2.zero;
         can_move = set;
     }
 
