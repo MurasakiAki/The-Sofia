@@ -19,6 +19,14 @@ public class PlayerController : MonoBehaviour
     public GameObject inventory; // Reference to the inventory panel UI
     public KeyCode toggleInventoryKey = KeyCode.Tab; // Key to toggle the inventory UI
     public HudScript HudScript;
+    public AudioSource audioSource;
+    public AudioClip soundClip;
+
+    public AudioSource audioSourceJupi;
+    public AudioClip soundClipJupi;
+
+    public AudioSource audioSourceCink;
+    public AudioClip soundClipCink;
 
     //PlayerProperties variables
     public int max_health;
@@ -270,7 +278,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            //ground impact sound
+            //ground impact sound - hotovo 
+
+            audioSource.PlayOneShot(soundClip);
+
             is_grounded = true;
         }
 
@@ -327,13 +338,19 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("NextLevel"))
         {
-            //next lvl sound
+           //level up - done
+            audioSourceJupi.PlayOneShot(soundClipJupi);
+
             GameLogic.NextLevel();
         }
 
         if(other.gameObject.CompareTag("Coin"))
         {
-            //coin pickup sound
+            //coin pickup sound  - hotovo
+
+            audioSourceCink.PlayOneShot(soundClipCink);
+
+
             coins = other.gameObject.GetComponent<Coin>().value;
             Destroy(other.gameObject);
             HudScript.SetCoin(coins);
