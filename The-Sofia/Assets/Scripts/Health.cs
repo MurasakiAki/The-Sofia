@@ -7,7 +7,13 @@ public class Health : MonoBehaviour
     public string type;
     public int maxHealth;
     public int currentHealth;
-    public HudScript HudScript; 
+    public HudScript HudScript;
+
+    public AudioSource enemenySmrt;
+    public AudioClip enemySmrtaa;
+
+    public AudioSource playerSmrt;
+    public AudioClip playerSmrtej;
 
     // Initialize maxHealth and currentHealth, if player has a save with less current health it will be loaded
     void Start()
@@ -96,13 +102,15 @@ public class Health : MonoBehaviour
             case "Player":
                 //Player death effect/death screan
                 //die sound + anim
+                playerSmrt.PlayOneShot(playerSmrtej);
+
                 gameObject.GetComponent<PlayerController>().SetMovability(false);
                 gameObject.GetComponent<PlayerAttack>().setCanAttack(false);
                 Debug.Log("Player died");
                 break;
             case "Enemy":
                 //Enemy death effect
-                //enemy die sound + anim/effect
+                enemenySmrt.PlayOneShot(enemySmrtaa);
                 Destroy(gameObject);
                 break;
             case "Object":
