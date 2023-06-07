@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+
+    public AudioSource audioBumSound;
+    public AudioClip bumSound;
+
     [SerializeField] private LayerMask hitableLayer;
 
     public GameObject player;
@@ -23,11 +27,11 @@ public class PlayerAttack : MonoBehaviour
 
 public void Attack()
 {
-    //attack sound + anim
-    //Insert Attack animation
-
-    //Detecting enemies
-    Collider2D[] hitEntities = Physics2D.OverlapCircleAll(attackPoint.position, player.GetComponent<PlayerController>().attackRange / 100, hitableLayer);
+        //attack sound + anim
+        //Insert Attack animation
+        audioBumSound.PlayOneShot(bumSound);
+        //Detecting enemies
+        Collider2D[] hitEntities = Physics2D.OverlapCircleAll(attackPoint.position, player.GetComponent<PlayerController>().attackRange / 100, hitableLayer);
 
     Debug.Log(hitEntities.Length + "Enemies detected");
     foreach (Collider2D entity in hitEntities)
