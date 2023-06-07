@@ -1,0 +1,92 @@
+Date : 2023-06-04 16:50:08
+Directory : /home/aki/Workplace/Git/The-Sofia/The-Sofia
+Total : 52 files,  6195 codes, 187 comments, 1011 blanks, all 7393 lines
+
+Languages
++-----------+------------+------------+------------+------------+------------+
+| language  | files      | code       | comment    | blank      | total      |
++-----------+------------+------------+------------+------------+------------+
+| ShaderLab |         13 |      2,015 |         61 |        557 |      2,633 |
+| C#        |         25 |      1,338 |         98 |        326 |      1,762 |
+| Log       |          5 |        994 |          0 |         35 |      1,029 |
+| XML       |          1 |        839 |          7 |          1 |        847 |
+| JSON      |          3 |        663 |          0 |          4 |        667 |
+| HLSL      |          4 |        323 |         21 |         87 |        431 |
+| Ini       |          1 |         23 |          0 |          1 |         24 |
++-----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                      |         52 |      6,195 |        187 |      1,011 |      7,393 |
+| . (Files)                                                                                              |          1 |        839 |          7 |          1 |        847 |
+| Assets                                                                                                 |         44 |      3,854 |        180 |        973 |      5,007 |
+| Assets/Scripts                                                                                         |         26 |      1,361 |         98 |        327 |      1,786 |
+| Assets/Scripts (Files)                                                                                 |         20 |      1,201 |         95 |        278 |      1,574 |
+| Assets/Scripts/Tomíkovy skryptíky                                                                      |          6 |        160 |          3 |         49 |        212 |
+| Assets/TextMesh Pro                                                                                    |         18 |      2,493 |         82 |        646 |      3,221 |
+| Assets/TextMesh Pro/Shaders                                                                            |         17 |      2,338 |         82 |        644 |      3,064 |
+| Assets/TextMesh Pro/Sprites                                                                            |          1 |        155 |          0 |          2 |        157 |
+| Logs                                                                                                   |          5 |        994 |          0 |         35 |      1,029 |
+| Packages                                                                                               |          2 |        508 |          0 |          2 |        510 |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------+-----------+------------+------------+------------+------------+
+| filename                                                                                               | language  | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+-----------+------------+------------+------------+------------+
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assembly-CSharp.csproj                                     | XML       |        839 |          7 |          1 |        847 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Armor.cs                                    | C#        |         12 |          2 |          5 |         19 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Coin.cs                                     | C#        |         12 |          0 |          3 |         15 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/EnemyController.cs                          | C#        |        162 |         10 |         41 |        213 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/EnemyTemplate.cs                            | C#        |         26 |          6 |          9 |         41 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/GameLogic.cs                                | C#        |        154 |          8 |         21 |        183 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Health.cs                                   | C#        |         89 |         13 |         15 |        117 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Inventory.cs                                | C#        |         35 |          2 |          3 |         40 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Object.cs                                   | C#        |         52 |          2 |         20 |         74 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/ObjectTemplate.cs                           | C#        |         15 |          4 |          7 |         26 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/PlayerAttack.cs                             | C#        |         56 |          6 |         14 |         76 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/PlayerController.cs                         | C#        |        294 |         17 |         56 |        367 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/PlayerProperties.ini                        | Ini       |         23 |          0 |          1 |         24 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Projectile.cs                               | C#        |         35 |          0 |          7 |         42 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/PropertyController.cs                       | C#        |         63 |          8 |         19 |         90 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Random_music_script.cs                      | C#        |         32 |          0 |          5 |         37 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/SlotParent.cs                               | C#        |         82 |          9 |         28 |        119 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Tomíkovy skryptíky/Audio.cs                 | C#        |         27 |          0 |          6 |         33 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Tomíkovy skryptíky/HudScript.cs             | C#        |         18 |          0 |          5 |         23 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Tomíkovy skryptíky/MainManu.cs              | C#        |         20 |          0 |          6 |         26 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Tomíkovy skryptíky/Music.cs                 | C#        |         29 |          0 |          9 |         38 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Tomíkovy skryptíky/Options.cs               | C#        |         18 |          1 |          9 |         28 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Tomíkovy skryptíky/PauseMenu.cs             | C#        |         48 |          2 |         14 |         64 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Trap.cs                                     | C#        |         18 |          0 |          6 |         24 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/Weapon.cs                                   | C#        |         15 |          0 |          7 |         22 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/WeaponList.cs                               | C#        |          7 |          0 |          2 |          9 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/Scripts/WeaponTemplate.cs                           | C#        |         19 |          8 |          9 |         36 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader | ShaderLab |        109 |          2 |         33 |        144 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader       | ShaderLab |        112 |          3 |         31 |        146 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader              | ShaderLab |        109 |          2 |         33 |        144 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader         | ShaderLab |        243 |          4 |         71 |        318 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader             | ShaderLab |        241 |          4 |         66 |        311 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader  | ShaderLab |        188 |         10 |         50 |        248 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader  | ShaderLab |        183 |          8 |         50 |        241 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader      | ShaderLab |         82 |          4 |         21 |        107 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader          | ShaderLab |        183 |          8 |         50 |        241 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader  | ShaderLab |        103 |          8 |         28 |        139 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader         | ShaderLab |        122 |          4 |         33 |        159 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_SDF.shader                 | ShaderLab |        243 |          4 |         71 |        318 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader              | ShaderLab |         97 |          0 |         20 |        117 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMPro.cginc                    | HLSL      |         63 |          2 |         20 |         85 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc             | HLSL      |        122 |          2 |         34 |        158 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc         | HLSL      |         62 |         10 |         14 |         86 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc            | HLSL      |         76 |          7 |         19 |        102 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Assets/TextMesh Pro/Sprites/EmojiOne.json                  | JSON      |        155 |          0 |          2 |        157 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Logs/AssetImportWorker0-prev.log                           | Log       |        762 |          0 |         17 |        779 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Logs/AssetImportWorker0.log                                | Log       |        180 |          0 |          7 |        187 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Logs/Packages-Update.log                                   | Log       |         48 |          0 |          7 |         55 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Logs/shadercompiler-AssetImportWorker0.log                 | Log       |          2 |          0 |          2 |          4 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Logs/shadercompiler-UnityShaderCompiler0.log               | Log       |          2 |          0 |          2 |          4 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Packages/manifest.json                                     | JSON      |         45 |          0 |          1 |         46 |
+| /home/aki/Workplace/Git/The-Sofia/The-Sofia/Packages/packages-lock.json                                | JSON      |        463 |          0 |          1 |        464 |
+| Total                                                                                                  |           |      6,195 |        187 |      1,011 |      7,393 |
++--------------------------------------------------------------------------------------------------------+-----------+------------+------------+------------+------------+
