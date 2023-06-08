@@ -29,5 +29,5 @@ MonoBehaviour:
   damageRangeMax: 3
   hitRate: 0.5
   playerDetectionRange: 10
-  sprite: {fileID: 21300000, guid: b281b91a70a624a0da1c43adc1c30c7b, type: 3}
+  sprite: {fileID: 21300000, guid: 812a03356abb99a40a516a7c067e4828, type: 3}
   projectile: {fileID: 0}

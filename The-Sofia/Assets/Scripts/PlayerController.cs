@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource audioSourceCink;
     public AudioClip soundClipCink;
 
+    //public Animator animator;
+
     //PlayerProperties variables
     public int max_health;
     public int current_health;
@@ -208,13 +210,14 @@ public class PlayerController : MonoBehaviour
     {
         // Get horizontal input
         float horizontalInput = Input.GetAxisRaw("Horizontal");
-
+        //animator.SetBool("isWalking", false);
         // Move the player
-        if(can_move)
+        if (can_move)
         {
             //move sound
             //move anim
             // Move the player
+            //animator.SetBool("isWalking",true);
             Vector2 movement = new Vector2(horizontalInput * speed, playerRigidbody.velocity.y);
             playerRigidbody.velocity = movement;
         
