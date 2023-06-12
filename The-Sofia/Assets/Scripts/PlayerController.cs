@@ -358,6 +358,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             HudScript.SetCoin(coins);
         }
+
     }
 
     public void SetMovability(bool set)
